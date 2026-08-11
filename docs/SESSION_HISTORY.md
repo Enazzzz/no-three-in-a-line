@@ -31,3 +31,10 @@ Timeline is approximate; cloud VMs were wiped mid-work.
 - Agents without linked `repoUrl` do not receive GitHub write credentials
 - Public repo ≠ push access
 - Commit/push continuously; local artifacts die with the pod
+
+## Smoke results (2026-08-11 offload)
+
+- HJSW verified for p∈{3,5,7,11,17,19} with exact size 3(p−1)
+- `solution(10)` → n=14, 23 points, ratio≈1.6429, verified
+- `distributed/scripts/demo_local.sh`: 6 jobs seeded, 3 claims accepted, fake collinear → HTTP 400
+- Addability scan written to `data/addability_scan.csv`

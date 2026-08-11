@@ -130,3 +130,8 @@ distributed/                  # full volunteer-compute harness
 ```
 
 End of dump.
+
+
+## Offload completion note
+
+Pushed to branch `cursor/offload-everything-7e69` on 2026-08-11. Human must **revoke** the temporary fine-grained PAT after confirming the PR/merge.
