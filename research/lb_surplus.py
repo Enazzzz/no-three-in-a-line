@@ -6,6 +6,12 @@ Correct scope (see docs/PROOF_LB_SURPLUS.md):
   with |T| > 3(p−1) has LB=0 but positive surplus.
 * Target statement: for *large* / max-primary packings S of ∪H(c) (|C|≥2),
   disjoint-excess LB(S) ≥ |S| − 3(p−1) when p≥17.
+* Scope is **board-coordinate** pools from `multi_hyperbola_pool` /
+  `hyperbola_points`. Ambient-aligned pools (same shift as HJSW) are
+  different sets; they can violate LB≥surplus — see
+  `docs/FINDINGS_AMBIENT_MULTI_H.md` and `research/ambient_multi_h.py`.
+* Board-pool “HJSW warm-start” often keeps few/no S₂ points (HJSW ⊄ board
+  pool). Prefer `ambient_multi_h` when a true HJSW seed is required.
 
 This module builds best-of warm-start/exact/greedy primary packings and
 records LB − surplus.

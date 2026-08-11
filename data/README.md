@@ -20,6 +20,8 @@
 | `lb_surplus_scan.csv` | LB − surplus certificates for multi-H primary packings |
 | `block_sacrifice_scan.csv` | HJSW T2 block drop ± M refill vs polished baseline |
 | `ambient_sharp_scan.csv` | Sharp n≤2p single-H cleanliness boundary certificate |
+| `ambient_multi_h_scan.csv` | Ambient-aligned multi-H vs polished HJSW + primary LB |
 
 Always re-verify configurations with `research.verify.verify_claim`.
-See `docs/FINDINGS*.md`, `docs/PROOF_SINGLE_H.md`, `docs/PROOF_LB_SURPLUS.md`.
+See `docs/FINDINGS*.md`, `docs/PROOF_SINGLE_H.md`, `docs/PROOF_LB_SURPLUS.md`,
+`docs/FINDINGS_AMBIENT_MULTI_H.md`.

@@ -115,3 +115,10 @@ Timeline is approximate; cloud VMs were wiped mid-work.
 - Proved sharpness: single-H cleanliness requires n≤2p (dirty at n=2p+1)
 - Larger boards with same modulus lose the two-lift advantage; densities lag
 - Posted: `docs/FINDINGS_AMBIENT.md`, `data/ambient_sharp_scan.csv`
+
+## Phase 19 — Ambient-aligned multi-hyperbola
+
+- Board `xy ≡ c` pools ≠ ambient HJSW supersets (often HJSW ∩ board ≈ O(1))
+- Ambient-aligned pools contain HJSW; fair local search only +O(1) vs polish
+- Ambient primary can violate LB≥surplus (Conjecture B′ is pool-dependent)
+- Posted: `docs/FINDINGS_AMBIENT_MULTI_H.md`, `data/ambient_multi_h_scan.csv`

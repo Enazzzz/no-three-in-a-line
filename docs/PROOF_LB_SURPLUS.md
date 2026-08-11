@@ -78,6 +78,12 @@ we have `LB(S) ≥ surplus(S)` in **all 80 / 80** rows
 (`data/lb_surplus_scan.csv`). Minimum `LB−surplus` by `p` grows from
 `+6` at `p=17` to about `+38` near `p=79`.
 
+**Pool scope:** `U(C)` here means the **board-coordinate** union from
+`hyperbola_points` / `multi_hyperbola_pool`. Ambient-aligned unions
+(same shift as HJSW) are different sets; their primary packings can have
+`LB < surplus` — see `docs/FINDINGS_AMBIENT_MULTI_H.md`. Also, board-pool
+“HJSW warm-start” typically retains few S₂ points because HJSW ⊄ board `U(C)`.
+
 The only scanned failure of `LB≥surplus` among small primes is
 `p=7` with `C={1,2,6}` (`gap=−2`), matching `FINDINGS_ALLSLOPE_HITTING.md`.
 

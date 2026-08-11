@@ -28,6 +28,10 @@ Detail and data live in the linked write-ups; this file is the map.
 4. **HJSW-first grafting and S₂ surgery are saturated** — second curves,
    board-wide risk0, joint search, T2 block sacrifice, same-modulus board
    growth: all O(1) or worse vs polished HJSW.
+5. **Ambient-aligned multi-`H`** (build in `G(p)`, same shift as HJSW) is the
+   correct HJSW-superset pool; board `xy ≡ c` pools usually miss HJSW.
+   Fair local search there still only ties / +O(1) vs polished HJSW.
+   Ambient primary packings can violate `LB ≥ surplus` (pool-dependent).
 
 **Honest status:** the obstruction map is much clearer; the asymptotic
 record is unchanged.
@@ -103,6 +107,7 @@ NTIL set can beat HJSW by a few points with `LB = 0`.
 | Joint empty-greedy / local search on mixed pools | Empty loses; local search only O(1) finite noise | `FINDINGS_JOINT.md` |
 | T2 block sacrifice ± M refill + polish | O(1); ≈ random same-size deletion | `FINDINGS_BLOCK_SACRIFICE.md` |
 | Ambient `n > 2p` with same modulus `p` | Loses two-lift cleanliness; densities lag HJSW on `n=2p` | `FINDINGS_AMBIENT.md` |
+| Ambient-aligned multi-`H` (correct HJSW shift) | HJSW ⊂ pool; fair polish Δ = 0…+3 only; primary can have LB&lt;surplus | `FINDINGS_AMBIENT_MULTI_H.md` |
 | Tile two HJSW copies on `n=4p` | Ratio ~1.41–1.45 < 3/2 | `FINDINGS_BLOCK_SACRIFICE.md` |
 
 ---
@@ -159,12 +164,12 @@ triples whose mandatory deletions exceed it.
 
 ## Open directions (higher leverage)
 
-1. **Finish Conjecture B** — turn the max-primary matching outline in
-   `PROOF_LB_SURPLUS.md` into a uniform theorem for all `p ≥ 17`.
+1. **Finish Conjecture B** for **board** multi-`H` pools — matching outline in
+   `PROOF_LB_SURPLUS.md`. Do not assume it for ambient-aligned pools.
 2. **New algebraic family + cut**, with modulus co-designed with `n`
-   (not “same `p`, bigger board”).
+   (not “same `p`, bigger board”, and not another ambient multi-`H` polish).
 3. Anything that is **not** another HJSW-first graft, multi-`H` primary
-   packing, or S₂ polish-seed surgery.
+   packing, S₂ polish-seed surgery, or ambient-shift multi-`H` local search.
 
 Still out of scope as a “solution”: claiming density `> 3/2 + ε` without a
 construction or proof.
@@ -178,6 +183,7 @@ construction or proof.
 | `PROOF_SINGLE_H.md` | Theorem: single-`H` clean for `n ≤ 2p` |
 | `PROOF_LB_SURPLUS.md` | Mixed corollary + LB≥surplus certificate / conjecture |
 | `FINDINGS_AMBIENT.md` | Sharpness at `n=2p+1`; ambient probes |
+| `FINDINGS_AMBIENT_MULTI_H.md` | Ambient-aligned multi-`H` vs board pools; fair polish |
 | `FINDINGS_ALLSLOPE_HITTING.md` | First LB vs surplus tables |
 | `FINDINGS_PRIMARY_REPAIR.md` | Primary surplus vs repair loss |
 | `FINDINGS_STRUCTURED.md` | Band/block/chessboard schedules |
