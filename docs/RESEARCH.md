@@ -90,6 +90,8 @@ constitute an asymptotic breakthrough.
 See `ALGEBRAIC_ADDABILITY.md` and **`FINDINGS.md`**.
 
 Short version (2026-08-11): raw and geometrically structured multi-hyperbola
-pools both see deletion LBs cancel any primary surplus over HJSW. Next leverage
-is algebraic control of which non-primary slopes can meet thrice — or a proof
-of `LB≥surplus` for these pools. See FINDINGS*.md.
+pools both see deletion LBs cancel any primary surplus over HJSW. Slope census
+shows a single `H(c)` is already non-primary-clean; all damage in unions is
+**mixed**. Mixed-kill / risk0 masks on a second hyperbola still lose to polished
+HJSW. Next leverage: prove the single-`H` law, or seek a **non-hyperbola**
+second family with sparse mixed triples. See `FINDINGS_SLOPE_CENSUS.md`.

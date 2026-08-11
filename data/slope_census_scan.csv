@@ -1,0 +1,11 @@
+p,n,hjsw,hjsw_polished,single_bad_c0,single_bad_c1,union_pure,union_mixed,union_all_mixed,union_disjoint_lb,single_h_final,single_h_delta,mixed_kill_final,mixed_kill_delta,mixed_deleted,exact_min_del,risk_full_safe,risk_prim_safe,risk_prim_final,risk_prim_delta_pol,protect_final,protect_delta_pol,best_final,best_delta_pol,best_family,runtime_s
+11,22,30,34,0,0,0,144,1,24,33,3,32,2,32,32,0,10,31,-3,34,0,34,0,hjsw_protected_enrich,1.57
+13,26,36,38,0,0,0,208,1,34,38,2,37,1,46,46,0,11,36,-2,38,0,38,0,single_h_primary,1.61
+17,34,48,54,0,0,0,354,1,43,47,-1,53,5,61,61,4,25,50,-4,54,0,54,0,hjsw_protected_enrich,1.75
+19,38,54,60,0,0,0,356,1,44,53,-1,55,1,68,68,0,20,53,-7,57,-3,60,0,hjsw_polished,1.84
+23,46,66,71,0,0,0,538,1,55,65,-1,69,3,91,91,0,11,64,-7,71,0,71,0,hjsw_protected_enrich,2.12
+29,58,84,88,0,0,0,792,1,71,82,-2,86,2,130,130,0,14,84,-4,88,0,88,0,hjsw_protected_enrich,2.77
+31,62,90,98,0,0,0,708,1,75,89,-1,93,3,131,131,4,22,94,-4,98,0,98,0,hjsw_protected_enrich,3.04
+37,74,108,115,0,0,0,1136,1,97,111,3,108,0,177,177,0,13,108,-7,115,0,115,0,hjsw_protected_enrich,4.15
+41,82,120,124,0,0,0,1260,1,101,120,0,117,-3,179,179,0,19,122,-2,124,0,124,0,hjsw_protected_enrich,5.10
+43,86,126,131,0,0,0,1440,1,103,124,-2,122,-4,185,185,0,17,127,-4,131,0,131,0,hjsw_protected_enrich,5.60

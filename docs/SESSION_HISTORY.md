@@ -73,3 +73,9 @@ Timeline is approximate; cloud VMs were wiped mid-work.
 - column/row bands, T2/M partition, chessboard residue coloring
 - LB ≥ surplus on all scanned primes; no asymptotic escape
 - Posted: `docs/FINDINGS_STRUCTURED.md`, `data/structured_schedule_scan.csv`
+
+## Phase 12 — Slope census / mixed-line masks
+
+- Single `H(c)` has zero non-primary ≥3-lines; unions are all-mixed
+- Mixed-kill and risk0 second-hyperbola masks lose to polished HJSW
+- Posted: `docs/FINDINGS_SLOPE_CENSUS.md`, `data/slope_census_scan.csv`
