@@ -8,7 +8,6 @@ from __future__ import annotations
 
 import argparse
 import csv
-import json
 import sys
 
 from research.proof_single_h import primes_to, verify_proof_ingredients

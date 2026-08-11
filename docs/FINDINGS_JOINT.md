@@ -58,8 +58,8 @@ two other modular curves at this search depth.
 
 Prefer the **proof** track for a while:
 
-1. Prove single-`H` non-primary cleanliness on `n=2p` (computationally clean
-   through `p≤179`; see `docs/PROOF_SKETCH_SINGLE_H.md`).
+1. ~~Prove single-`H` non-primary cleanliness on `n=2p`~~ — done:
+   `docs/PROOF_SINGLE_H.md`.
 2. Prove `LB(p) ≥ surplus(p)` for raw max-primary multi-`H` pools for odd
    `p≥17`.
 
