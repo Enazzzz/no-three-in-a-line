@@ -258,7 +258,7 @@ def best_multi_hyperbola(
 	seed: int = 0,
 ) -> Tuple[int, List[Point], dict]:
 	"""Try a few residue sets × modes; return densest verified config."""
-	best_n, best_pts, best_st = hjsw(p)
+	best_n, best_pts = hjsw(p)
 	best_st = {
 		"family": "hjsw_fallback",
 		"size": len(best_pts),

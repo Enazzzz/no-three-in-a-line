@@ -38,6 +38,6 @@ Workers are **never** trusted. The coordinator re-runs exact integer collinearit
 
 ## Next agent
 
-1. Read `docs/FINDINGS.md`
-2. Continue from the stated next constructive step (simultaneous / delete-first multi-hyperbola)
+1. Read `docs/FINDINGS.md` and `docs/FINDINGS_MULTI_HYPERBOLA.md`
+2. Continue only from the higher-leverage structured / exact-repair ideas there
 3. Push often — VM disk is temporary

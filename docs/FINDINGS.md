@@ -79,6 +79,13 @@ Stop grafting onto a frozen HJSW S₂. Instead try one of:
 Until one of those shows **individually-ok density that grows with `p`**,
 treat `>1.55n` wins as sparse finite artifacts.
 
+## Follow-up (same day): simultaneous / delete-first
+
+See **`FINDINGS_MULTI_HYPERBOLA.md`**. Short version: greedy delete-first /
+keep on raw multi-hyperbola unions beats HJSW slightly on tiny primes but
+**loses to HJSW-subset** as `p` grows, and falls back to HJSW by `p≈83`.
+Unstructured deletion does not beat the classical S₂ transversal.
+
 ## Repro
 
 ```bash

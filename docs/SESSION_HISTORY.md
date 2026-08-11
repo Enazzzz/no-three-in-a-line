@@ -47,3 +47,10 @@ Timeline is approximate; cloud VMs were wiped mid-work.
 - Root cause: H(c₁) vs HJSW has individually-ok counts typically 0–2
 - Posted write-up: `docs/FINDINGS.md`
 - Next direction: simultaneous / delete-first multi-hyperbola designs
+
+## Phase 8 — Simultaneous / delete-first multi-hyperbola
+
+- Implemented raw multi-hyperbola pools + delete-first / greedy-keep
+- Scan p≤97: multi loses to subset (9–2); falls back to HJSW by p≈83
+- Posted: `docs/FINDINGS_MULTI_HYPERBOLA.md` + `data/multi_hyperbola_scan.csv`
+- Unstructured deletion on bigger unions does not beat classical S₂
