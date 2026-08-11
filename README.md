@@ -38,7 +38,7 @@ Workers are **never** trusted. The coordinator re-runs exact integer collinearit
 
 ## Next agent
 
-1. Read `docs/FINDINGS*.md` (especially non-hyperbola + slope census)
+1. Read `docs/FINDINGS*.md` (especially joint packing + proof sketch)
 2. Next leverage: algebraic non-primary slope census / formal LB≥surplus
 3. Prefer commits on `main` (or merge feature branches) over PRs unless asked
 4. Push often — VM disk is temporary

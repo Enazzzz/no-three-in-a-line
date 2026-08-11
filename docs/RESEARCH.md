@@ -89,8 +89,8 @@ constitute an asymptotic breakthrough.
 
 See `ALGEBRAIC_ADDABILITY.md` and **`FINDINGS.md`**.
 
-Short version (2026-08-11): raw/structured multi-hyperbola pools and
-HJSW-first second-family enrichment (hyperbola or otherwise, even board-wide
-risk0) all fail to beat polished HJSW in a way that scales. Next leverage:
-**joint** two-family designs, or proofs (single-`H` cleanliness;
-`LB≥surplus` for multi-`H` primary optima). See `FINDINGS_NONHYPERBOLA.md`.
+Short version (2026-08-11): HJSW-first grafts and joint pool+search (empty
+greedy / light local search on H∪parabola∪circle) only yield O(1) finite
+noise. Prefer the proof track: single-`H` non-primary cleanliness (certificate
+through p≤179 in `PROOF_SKETCH_SINGLE_H.md`) and `LB≥surplus` for multi-`H`
+primary optima. See `FINDINGS_JOINT.md`.
