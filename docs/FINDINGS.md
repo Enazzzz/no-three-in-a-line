@@ -93,6 +93,12 @@ row/col/±1 **can exceed HJSW by ~Θ(p)**, but all-slope repair deletes more
 than the surplus. Primary classes are not the binding obstruction; other
 slopes are.
 
+## Follow-up: hitting-set lower bounds
+
+See **`FINDINGS_ALLSLOPE_HITTING.md`**. For `p≥17`, a disjoint-excess lower
+bound on mandatory general-slope deletions **already exceeds** the primary
+surplus over HJSW — so the surplus cannot survive optimal repair.
+
 ## Repro
 
 ```bash

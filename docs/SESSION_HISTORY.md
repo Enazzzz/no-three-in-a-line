@@ -61,3 +61,9 @@ Timeline is approximate; cloud VMs were wiped mid-work.
 - Primary size can exceed HJSW by ~Θ(p); all-slope repair loss grows faster
 - Posted: `docs/FINDINGS_PRIMARY_REPAIR.md`, `data/primary_surplus_diag.csv`
 - Binding obstruction = non-primary slopes, not primary capacity
+
+## Phase 10 — All-slope hitting lower bounds
+
+- Disjoint-excess LB on general-slope deletions vs primary surplus
+- For p≥17, LB > surplus (gap widens with p); surplus cannot survive repair
+- Posted: `docs/FINDINGS_ALLSLOPE_HITTING.md`, `data/allslope_hitting_scan.csv`

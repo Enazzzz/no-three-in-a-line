@@ -89,8 +89,7 @@ constitute an asymptotic breakthrough.
 
 See `ALGEBRAIC_ADDABILITY.md` and **`FINDINGS.md`**.
 
-Short version (2026-08-11): polishing HJSW, grafting hyperbolas, unstructured
-delete-first, and **exact primary packing** all fail to produce lasting density
-past `3/2`. Primary-feasible multi-hyperbola sets can exceed HJSW size, but
-non-primary slopes delete the surplus. See FINDINGS*.md. Next leverage is
-controlling arbitrary slopes by construction, not post-hoc deletion.
+Short version (2026-08-11): raw multi-hyperbola primary packing can beat HJSW
+size, but for `p≥17` a deletion lower bound on non-primary lines already
+exceeds that surplus — so the surplus cannot survive. See FINDINGS*.md.
+Next leverage is algebraic control of arbitrary slopes, not better deletion.

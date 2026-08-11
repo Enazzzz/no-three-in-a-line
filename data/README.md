@@ -10,7 +10,7 @@
 | `multi_hyperbola_scan.csv` | Simultaneous / delete-first multi-hyperbola vs baselines |
 | `primary_repair_scan.csv` | Exact primary repair pipeline vs HJSW/subset |
 | `primary_surplus_diag.csv` | Max primary surplus and all-slope repair loss |
+| `allslope_hitting_scan.csv` | Hitting LB/UB vs primary surplus over HJSW |
 
 Always re-verify configurations with `research.verify.verify_claim`.
-See `docs/FINDINGS.md`, `docs/FINDINGS_MULTI_HYPERBOLA.md`,
-`docs/FINDINGS_PRIMARY_REPAIR.md`.
+See `docs/FINDINGS*.md`.
