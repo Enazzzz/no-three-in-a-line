@@ -86,6 +86,13 @@ keep on raw multi-hyperbola unions beats HJSW slightly on tiny primes but
 **loses to HJSW-subset** as `p` grows, and falls back to HJSW by `p≈83`.
 Unstructured deletion does not beat the classical S₂ transversal.
 
+## Follow-up: exact primary repair
+
+See **`FINDINGS_PRIMARY_REPAIR.md`**. Exact max subset under ≤2 per
+row/col/±1 **can exceed HJSW by ~Θ(p)**, but all-slope repair deletes more
+than the surplus. Primary classes are not the binding obstruction; other
+slopes are.
+
 ## Repro
 
 ```bash

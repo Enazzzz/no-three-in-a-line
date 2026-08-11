@@ -38,6 +38,6 @@ Workers are **never** trusted. The coordinator re-runs exact integer collinearit
 
 ## Next agent
 
-1. Read `docs/FINDINGS.md` and `docs/FINDINGS_MULTI_HYPERBOLA.md`
-2. Continue only from the higher-leverage structured / exact-repair ideas there
+1. Read `docs/FINDINGS.md`, `FINDINGS_MULTI_HYPERBOLA.md`, `FINDINGS_PRIMARY_REPAIR.md`
+2. Continue only from structured non-primary-slope control / hitting-set lower bounds
 3. Push often — VM disk is temporary

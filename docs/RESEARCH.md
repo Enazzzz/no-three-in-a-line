@@ -89,8 +89,8 @@ constitute an asymptotic breakthrough.
 
 See `ALGEBRAIC_ADDABILITY.md` and **`FINDINGS.md`**.
 
-Short version (2026-08-11): polishing HJSW, grafting a second hyperbola, and
-unstructured delete-first on multi-hyperbola unions all land at or below
-`~1.55n` finite gains and do **not** show extras growing with `p`. See
-`FINDINGS.md` + `FINDINGS_MULTI_HYPERBOLA.md`. Next leverage is structured
-masks / exact primary repair — not more greedy union polishing.
+Short version (2026-08-11): polishing HJSW, grafting hyperbolas, unstructured
+delete-first, and **exact primary packing** all fail to produce lasting density
+past `3/2`. Primary-feasible multi-hyperbola sets can exceed HJSW size, but
+non-primary slopes delete the surplus. See FINDINGS*.md. Next leverage is
+controlling arbitrary slopes by construction, not post-hoc deletion.

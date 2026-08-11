@@ -54,3 +54,10 @@ Timeline is approximate; cloud VMs were wiped mid-work.
 - Scan p≤97: multi loses to subset (9–2); falls back to HJSW by p≈83
 - Posted: `docs/FINDINGS_MULTI_HYPERBOLA.md` + `data/multi_hyperbola_scan.csv`
 - Unstructured deletion on bigger unions does not beat classical S₂
+
+## Phase 9 — Exact primary-class repair
+
+- BnB max subset with ≤2 per row/col/±1 on multi-hyperbola pools
+- Primary size can exceed HJSW by ~Θ(p); all-slope repair loss grows faster
+- Posted: `docs/FINDINGS_PRIMARY_REPAIR.md`, `data/primary_surplus_diag.csv`
+- Binding obstruction = non-primary slopes, not primary capacity
