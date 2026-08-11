@@ -1,22 +1,17 @@
-"""Generate addability summary CSV for interesting primes (offline utility)."""
+"""Generate addability summary CSV for interesting primes.
+
+Usage: PYTHONPATH=. python research/scan_addability.py > data/addability_scan.csv
+"""
 
 from __future__ import annotations
 
 import csv
 import sys
-from pathlib import Path
-
-# Repo root on path when run as python -m is awkward; prefer:
-# PYTHONPATH=. python research/scan_addability.py
-ROOT = Path(__file__).resolve().parents[1]
-if str(ROOT) not in sys.path:
-	sys.path.insert(0, str(ROOT))
 
 from research.algebraic import summarize_addability
 from research.constructions import hjsw
 
-
-DEFAULT_PRIMES = [5, 7, 17, 19, 31, 37, 61, 67, 71, 83, 97]
+DEFAULT_PRIMES = [5, 7, 17, 19, 31, 37, 61, 67, 71, 83, 97, 107, 109, 139, 151, 167, 173, 181, 281]
 
 
 def main() -> None:
