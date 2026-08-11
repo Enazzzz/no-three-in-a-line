@@ -129,3 +129,11 @@ Timeline is approximate; cloud VMs were wiped mid-work.
 - Certified lemmas B1 (`LB≥⌊m/3⌋`) and B2 (`⌊m/3⌋≥surplus`) on 80/80 board packs
 - Minority bad-line coverage imperfect (≳0.81); mono-color primary ≪ HJSW
 - Posted: updated `docs/PROOF_LB_SURPLUS.md`, `data/conjecture_b_lemmas_scan.csv`
+
+## Phase 21 — B2 provenance check (negative)
+
+- ~0.7 mono/HJSW is `∼2p/3(p−1)`, not a single-H corollary
+- Real structure: board H row/col occupancy ≤2 (two-lift) ⇒ primary⇔±1 caps
+- Conjecture M: mono size `2p` or `2(p+1)` by `p mod 4` (16/16 through p=61)
+- Mono cap ↛ B2 (only 4/60 rows forced); B2 is an independent conjecture
+- Posted: `research/b2_provenance.py`, `data/b2_provenance_scan.csv`

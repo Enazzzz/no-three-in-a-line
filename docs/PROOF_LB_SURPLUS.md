@@ -93,48 +93,79 @@ PYTHONPATH=. python3 research/scan_lb_surplus.py --lo 7 --hi 80 > data/lb_surplu
 
 ## Proof outline toward Conjecture B (incomplete)
 
-### Reduction (sufficient lemmas)
+### Reduction (sufficient lemmas — not a free lunch)
 
 Write `M = max_c |S ∩ H(c)|` and `m = |S| − M` (majority / minority mass
 under **board** coloring `xy mod p`). Let `LB` be the disjoint-excess lower
-bound. Conjecture B follows from:
+bound. Conjecture B *would* follow from:
 
 | Lemma | Statement | Status |
 |-------|-----------|--------|
-| **B1** | `LB(S) ≥ ⌊m/3⌋` | Certified 80/80 on algorithmic max-primary packs (`data/conjecture_b_lemmas_scan.csv`); **not proved** |
+| **B1** | `LB(S) ≥ ⌊m/3⌋` | Certified 80/80 (`data/conjecture_b_lemmas_scan.csv`); **not proved** |
 | **B2** | `⌊m/3⌋ ≥ surplus(S)` | Same certificate 80/80; **not proved** |
 
 Together: `LB ≥ ⌊m/3⌋ ≥ surplus`. Code: `research/conjecture_b_lemmas.py`.
 
-**Caveats for a proof of B1.** Minority points are **not** always all on bad
-lines (min coverage ≈ 0.81 on the certificate). So B1 is not just
-“cover minority by disjoint triangles.” The disjoint-excess packing still
-clears `⌊m/3⌋` on every scanned row; the missing argument is a structural
-matching that does not assume full coverage.
+**Warning.** This is a reduction to **two new claims**, not an inheritance
+from `PROOF_SINGLE_H`. Unless B1/B2 get independent counting proofs, the
+reduction trades one conjecture for two. Prefer proving Conjecture B
+directly, or proving B1 alone plus a different gap argument.
 
-**Caveats for a proof of B2.** Equivalently
-`3(p−1) − M ≥ m − ⌊m/3⌋` (majority deficit vs residual minority). On the
-certificate, `surplus/m ≤ 1/4`. A usable bound may come from controlling
-`M` via mono-color primary capacity (below).
+**Caveats for B1.** Minority points are not always all on bad lines (min
+coverage ≈ 0.81). B1 is not “cover minority by disjoint triangles.”
+
+### B2 provenance (pushed first — negative result)
+
+The suggestive “mono primary ≈ 0.7 · |HJSW|” figure is **not** a corollary
+of the single-hyperbola theorem. Provenance check
+(`research/b2_provenance.py`, `data/b2_provenance_scan.csv`):
+
+1. **What single-H + two-lift *does* give.** On board `H(c)` with `n=2p`,
+   every row and every column already meets `H(c)` in ≤2 points. So any
+   subset is automatically row/col primary-feasible; primary ⇔ ≤2 on each
+   slope-`±1` diagonal; and by `PROOF_SINGLE_H`, primary ⇔ NTIL on that
+   color. This is real structure — and it never mentions HJSW.
+
+2. **Where the ~0.7 comes from.** Algorithmic max primary size in board
+   `H(1)` equals `2(p+1)` when `p≡1 (mod 4)` and `2p` when `p≡3 (mod 4)`
+   for all odd primes `5≤p≤61` (16/16 hits). Comparing to
+   `|HJSW|=3(p−1)` yields ratio `∼ 2p/3(p−1) → 2/3`. That is a comparison
+   of two different geometries (board ±1 packing vs ambient T2 cut), not a
+   consequence of single-H cleanliness.
+
+3. **Even a mono cap does not force B2.** Substituting the uniform bound
+   `M ≤ 2(p+1)` into B2 gives the sufficient arithmetic test
+   `⌊m/3⌋ ≥ 2(p+1) + m − 3(p−1) = m − p + 5`. On board multi-H
+   certificates this fails on **56/60** rows with `p≤61` (only 4/60 forced),
+   while actual B2 (using the true `M`) still holds. So a proved mono-color
+   capacity bound — even the tight-looking `2(p+1)` — is **not** a proof of
+   B2. Large minority mass makes the worst-case-`M` surplus too big.
+
+**Verdict:** treat B2 as an independent conjecture (or drop it as a proof
+route). Do not advertise the 0.7 ratio as single-H provenance.
 
 ### Outline steps (older numbering)
 
 1. **Color partition.** Residues `c=xy mod p` partition `S` as `⊔_c S_c`.
 2. **Majority / minority.** As above.
-3. **Matching (→ B1).** Mixed bad lines (Theorem A) + disjoint excess packing
-   → `LB ≥ ⌊m/3⌋` for large primary `S`.
-4. **Gap (→ B2).** Uniform `⌊m/3⌋ ≥ |S|−3(p−1)`.
+3. **Matching (→ B1).** Mixed bad lines (Theorem A) + counting → `LB ≥ ⌊m/3⌋`.
+4. **Gap.** Still need `LB ≥ surplus` (directly, or via something other than
+   the failed mono-cap→B2 route).
 
-Until B1 and B2 are proved for max-primary `S`, Conjecture B remains open;
-Certificate B′ + the B1/B2 scan are the working substitutes.
+Until there is a counting proof, Conjecture B remains open; Certificate B′
+is the working substitute for the pools this repo searches.
 
-### Empirical mono-color capacity (lemma candidate)
+### Mono-color cap (separate conjecture; does not unlock B2)
 
-Any primary-feasible subset of a **single** board `H(c)` is NTIL
-(`PROOF_SINGLE_H`). Algorithmic max primary inside board `H(1)` is only about
-`0.68–0.75` of `|HJSW|` for `17≤p≤43` (appendix in the lemma scan log) —
-consistent with HJSW living in ambient T2, not board `H(1)`. A proved upper
-bound `M ≤ α·3(p−1)` with `α<1` would help B2.
+**Conjecture M.** For odd prime `p` and board `H(c)` on `n=2p`, every
+primary-feasible `T ⊆ H(c)` has
+
+```
+|T| ≤ 2(p + 1_{p≡1 (mod 4)}).
+```
+
+Certified for `c=1` and `5≤p≤61`. Proving M is worthwhile as hyperbola
+geometry; it is **not** a path to B2 (above).
 
 ## Consequences
 
@@ -152,10 +183,12 @@ bound `M ≤ α·3(p−1)` with `α<1` would help B2.
 
 ## Next step
 
-**Theorem track (preferred):** prove lemmas **B1** and **B2** above for
-maximum-cardinality primary-feasible `S ⊆ U(C)` (board pools). Start with
-B2 via a mono-color majority bound, then B1 via a matching that tolerates
-uncovered minority points.
+**Theorem track:** seek a **direct counting proof** of Conjecture B
+(`LB ≥ surplus` for max-primary board multi-`H`), or a counting proof of
+**B1** plus a gap argument that does **not** route through mono-cap→B2.
 
-Construction track remains open but is secondary while the goal is a theorem
-out of the multi-`H` obstruction.
+Do **not** treat B2 as settled by the ~0.7 mono/HJSW ratio — that ratio has
+no single-H provenance and the mono cap does not imply B2.
+
+Optional side lemma: prove Conjecture M (mono primary `≤ 2(p+1_{p≡1 mod 4})`)
+as hyperbola/±1 packing geometry, explicitly decoupled from Conjecture B.

@@ -19,6 +19,7 @@
 | `proof_single_h_scan.csv` | Lemma checks for the single-H non-primary theorem |
 | `lb_surplus_scan.csv` | LB − surplus certificates for multi-H primary packings |
 | `conjecture_b_lemmas_scan.csv` | B1/B2 reduction: LB≥⌊m/3⌋≥surplus on same packs |
+| `b2_provenance_scan.csv` | Mono caps vs HJSW; mono-cap alone does not force B2 |
 | `block_sacrifice_scan.csv` | HJSW T2 block drop ± M refill vs polished baseline |
 | `ambient_sharp_scan.csv` | Sharp n≤2p single-H cleanliness boundary certificate |
 | `ambient_multi_h_scan.csv` | Ambient-aligned multi-H vs polished HJSW + primary LB |

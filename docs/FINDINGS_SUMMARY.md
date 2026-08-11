@@ -167,11 +167,14 @@ triples whose mandatory deletions exceed it.
 
 ## Open directions (higher leverage)
 
-1. **Prove Conjecture B** for board multi-`H` pools — reduce to lemmas B1/B2
-   in `PROOF_LB_SURPLUS.md` (both certified 80/80; neither proved).
-2. **New algebraic family + cut**, with modulus co-designed with `n`
-   (secondary while the goal is a theorem from the obstruction map).
-3. Avoid saturated HJSW grafts / multi-`H` polish / ambient-shift local search.
+1. **Prove Conjecture B** for board multi-`H` pools — preferably by a direct
+   counting argument for `LB ≥ surplus`. The B1/B2 split is certified but
+   B2 has **no** single-H provenance; mono-cap↛B2
+   (`docs/PROOF_LB_SURPLUS.md`, `data/b2_provenance_scan.csv`).
+2. Optional: prove mono-color Conjecture M (`|T|≤2(p+1_{p≡1 mod 4})` on board
+   `H(c)`) as its own geometric lemma — not as a route to B2.
+3. **New algebraic family + cut** remains secondary while the goal is a
+   theorem from the obstruction map.
 
 Still out of scope as a “solution”: claiming density `> 3/2 + ε` without a
 construction or proof.
