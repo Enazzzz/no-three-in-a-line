@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>NTIL Leaderboard</title>
+	<style>
+		:root { --bg:#f7f3ea; --ink:#1c1a16; --accent:#0b6e4f; }
+		body { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, serif; margin: 2rem; background: radial-gradient(circle at top left, #fff8e7, var(--bg)); color: var(--ink); }
+		h1 { font-size: 2rem; margin-bottom: 0.25rem; }
+		p { max-width: 40rem; }
+		table { border-collapse: collapse; width: 100%; max-width: 56rem; margin-top: 1.5rem; }
+		th, td { text-align: left; padding: 0.5rem 0.75rem; border-bottom: 1px solid #d2c6b0; }
+		th { color: var(--accent); }
+		code { font-family: ui-monospace, monospace; font-size: 0.9em; }
+	</style>
+</head>
+<body>
+	<h1>NTIL verified leaderboard</h1>
+	<p>Workers are never trusted. Only independently verified configurations appear here.</p>
+	<p><code>GET /leaderboard</code> · refresh loads live JSON.</p>
+	<table>
+		<thead>
+			<tr><th>n</th><th>size</th><th>ratio</th><th>family</th><th>cert</th></tr>
+		</thead>
+		<tbody id="rows"><tr><td colspan="5">Loading…</td></tr></tbody>
+	</table>
+	<script>
+		async function load() {
+			const res = await fetch('/leaderboard?limit=100');
+			const data = await res.json();
+			const tb = document.getElementById('rows');
+			if (!data.entries.length) {
+				tb.innerHTML = '<tr><td colspan="5">No verified claims yet.</td></tr>';
+				return;
+			}
+			tb.innerHTML = data.entries.map(e =>
+				`<tr><td>${e.n}</td><td>${e.size}</td><td>${Number(e.ratio).toFixed(4)}</td><td>${e.family||''}</td><td><code>${(e.cert_hash||'').slice(0,12)}</code></td></tr>`
+			).join('');
+		}
+		load();
+		setInterval(load, 5000);
+	</script>
+</body>
+</html>

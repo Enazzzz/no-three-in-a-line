@@ -1,0 +1,14 @@
+{
+  "description": "Primes where prior HJSW+greedy scans produced ratio > 1.55 on n=2p (from recovered session memory; re-verify before trusting).",
+  "ratio_threshold": 1.55,
+  "board": "n = 2p",
+  "primes": [5, 7, 17, 19, 31, 37, 61, 67, 71, 83, 97, 107, 109, 139, 151, 167, 173, 181, 281],
+  "notable": {
+    "281": { "n": 562, "approx_ratio": 1.5516 }
+  },
+  "caveats": [
+    "List is partial and from a wiped VM session.",
+    "No clean modular pattern was found among winners.",
+    "Additive O(1) gains do not beat the asymptotic 3/2 barrier."
+  ]
+}

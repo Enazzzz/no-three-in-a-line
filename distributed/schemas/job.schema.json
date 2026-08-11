@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NTILJob",
+  "type": "object",
+  "required": ["job_id", "family", "params"],
+  "properties": {
+    "job_id": { "type": "string" },
+    "family": {
+      "type": "string",
+      "enum": ["hjsw", "hjsw_augment", "algebraic_addable", "hyperbola_union"]
+    },
+    "params": {
+      "type": "object",
+      "required": ["p"],
+      "properties": {
+        "p": { "type": "integer", "minimum": 3 },
+        "n": { "type": "integer" },
+        "c": { "type": "integer" },
+        "seed": { "type": "integer" },
+        "time_limit_s": { "type": "number" }
+      }
+    },
+    "time_limit_s": { "type": "number" }
+  }
+}
