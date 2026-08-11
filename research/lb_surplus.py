@@ -26,7 +26,6 @@ from research.constructions import hjsw, is_prime, next_prime
 from research.hyperbola_union import hyperbola_points
 from research.multi_hyperbola import default_residue_sets, multi_hyperbola_pool
 from research.primary_repair import exact_primary_max, greedy_primary_max, primary_keys
-from research.proof_single_h import classify_collinear_triples
 from research.verify import verify_claim
 
 Point = Tuple[int, int]
