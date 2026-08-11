@@ -81,4 +81,38 @@ search, and explains why prime-by-prime winner lists looked noisy.
 4. Only then filter remaining general slopes.
 5. Log tables of survivor counts vs `p` (job for `distributed/` workers).
 
-Code helpers live in `research/algebraic.py` and `distributed/ntil/algebraic.py`.
+Code helpers live in `research/algebraic.py`, `research/subset.py`, and
+`distributed/ntil/algebraic.py`.
+
+## 6. Empirical results (2026-08-11, corrected ≥2 rule)
+
+**Bug fixed:** an earlier filter treated any occupied row/column as forbidden.
+With the correct ≤2-per-line rule, four-constraint survivor counts grow with
+`p` (e.g. ~20k at `p=281`).
+
+**All-slope bottleneck:** after filtering general slopes via slope tables,
+the individually addable pool stays small — roughly **8–46** points across
+winning primes up to `p=281`. Exact / greedy MIS on that tiny conflict graph
+adds about **4–31** points:
+
+| p | 4-constraint | individually ok | added | ratio |
+|---|-------------:|----------------:|------:|------:|
+| 5 | 24 | 10 | 4 | 1.600 |
+| 97 | 2555 | 20 | 14 | 1.557 |
+| 139 | 5058 | 23 | 19 | 1.558 |
+| 281 | 20335 | 46 | 31 | 1.550 |
+
+This matches the program’s prediction: primary classes leave many candidates,
+but **other slopes wipe almost all of them**. Additive `O(1)`–`O(√n)` style
+gains still do **not** beat the asymptotic `3/2` barrier. Next leverage is
+changing the seed (hyperbola unions + careful ±1 deletion), not polishing
+classical HJSW alone.
+
+See `data/addability_scan.csv` and `data/subset_scan.csv`.
+
+## 7. Hyperbola-union smoke (same day)
+
+`research/hyperbola_union.py` tries a second residue `c1` with ±1 deletion.
+On small primes it slightly beats pure HJSW-subset (e.g. `p=31`: union
+ratio ≈1.581 vs subset ≈1.548). Still additive, not asymptotic — but a
+better seed than polishing a single hyperbola.

@@ -32,9 +32,11 @@ Timeline is approximate; cloud VMs were wiped mid-work.
 - Public repo ≠ push access
 - Commit/push continuously; local artifacts die with the pod
 
-## Smoke results (2026-08-11 offload)
+## Phase 6 — Algebraic survivor fix + subset tables (2026-08-11)
 
-- HJSW verified for p∈{3,5,7,11,17,19} with exact size 3(p−1)
-- `solution(10)` → n=14, 23 points, ratio≈1.6429, verified
-- `distributed/scripts/demo_local.sh`: 6 jobs seeded, 3 claims accepted, fake collinear → HTTP 400
-- Addability scan written to `data/addability_scan.csv`
+- Fixed four-constraint horiz/vert filter: use ≥2 saturation, not “occupied”
+- Slope-table O(m) individual addability; exact/greedy MIS on tiny ok-pools
+- Empirically: 4-constraint survivors grow with p, but all-slope survivors stay O(10–50)
+- Additive gains of ~4–31 points; some ratios >1.55; no asymptotic breakthrough
+- Hyperbola-union ±1 filter slightly beats single-hyperbola subset on small p
+- Data: `data/addability_scan.csv`, `data/subset_scan.csv`

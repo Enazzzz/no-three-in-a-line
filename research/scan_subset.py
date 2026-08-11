@@ -18,8 +18,10 @@ from research.constructions import hjsw
 from research.subset import max_safe_augmentation
 from research.verify import verify_claim
 
-# Cap at 97 for this VM pass; larger primes need distributed workers.
-DEFAULT_PRIMES = [5, 7, 17, 19, 31, 37, 61, 67, 71, 83, 97]
+# Cap: all known interesting primes; p=281 is ~tens of seconds with slope tables.
+DEFAULT_PRIMES = [
+	5, 7, 17, 19, 31, 37, 61, 67, 71, 83, 97, 107, 109, 139, 151, 167, 173, 181, 281,
+]
 
 
 def main() -> None:

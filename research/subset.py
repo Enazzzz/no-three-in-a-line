@@ -14,7 +14,12 @@ from __future__ import annotations
 from math import gcd
 from typing import Dict, List, Sequence, Set, Tuple
 
-from research.algebraic import four_constraint_survivors, saturated_differences, saturated_rows_cols
+from research.algebraic import (
+	four_constraint_survivors,
+	saturated_differences,
+	saturated_rows_cols,
+	unsaturated_hv_candidates,
+)
 from research.verify import _orient, verify_claim
 
 Point = Tuple[int, int]
@@ -145,6 +150,9 @@ def max_safe_augmentation(
 	exact_limit caps the exact MIS size so medium primes stay cheap on a VM.
 	"""
 	base_list = [tuple(p) for p in base]  # type: ignore[misc]
+	# Restrict to unsaturated row/col cells first (avoids scanning the full n² board).
+	if pool is None:
+		pool = unsaturated_hv_candidates(n, base_list)
 	surv = four_constraint_survivors(n, base_list, pool)
 	tables = build_slope_tables(base_list)
 	individually_ok: List[Point] = [
@@ -159,17 +167,32 @@ def max_safe_augmentation(
 		picked = greedy_independent_set(g)
 		method = "greedy"
 
-	aug = list(base_list) + picked
+	# Incremental accept: update slope tables as points are added (no O(m³) verify).
+	aug = list(base_list)
+	live_tables = {p: set(slopes) for p, slopes in tables.items()}
+	accepted: List[Point] = []
+	for cand in picked:
+		if not individually_addable(cand, aug, live_tables):
+			method = method + "+peel"
+			continue
+		# Also forbid 4-class conflicts against already accepted extras.
+		conflict = False
+		for a in accepted:
+			if _pair_conflicts(cand, a, base_list):
+				conflict = True
+				break
+		if conflict:
+			method = method + "+peel"
+			continue
+		# Extend slope tables with the new point.
+		live_tables[cand] = set()
+		for q in aug:
+			s = _norm_slope(cand[0] - q[0], cand[1] - q[1])
+			live_tables[q].add(s)
+			live_tables[cand].add(s)
+		aug.append(cand)
+		accepted.append(cand)
 	ok, reason = verify_claim(n, aug)
-	if not ok:
-		aug = list(base_list)
-		for cand in picked:
-			trial = aug + [cand]
-			tok, _ = verify_claim(n, trial)
-			if tok:
-				aug.append(cand)
-		ok, reason = verify_claim(n, aug)
-		method = method + "+peel"
 
 	stats = {
 		"four_constraint_survivors": len(surv),

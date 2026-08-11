@@ -9,7 +9,9 @@ from __future__ import annotations
 from typing import List, Tuple
 
 from research.constructions import hjsw, is_prime, next_prime
+from research.hyperbola_union import try_hyperbola_unions
 from research.search import greedy_augment
+from research.subset import max_safe_augmentation
 from research.verify import verify_claim
 
 Point = Tuple[int, int]
@@ -17,7 +19,7 @@ Point = Tuple[int, int]
 # Strictly increasing n across calls (process-local).
 _LAST_N = 0
 
-# Primes where prior HJSW+greedy scans beat 1.55n (partial list).
+# Primes where prior HJSW+greedy / subset scans beat 1.55n (partial list).
 _WINNING_PRIMES = [
 	5, 7, 17, 19, 31, 37, 61, 67, 71, 83, 97, 107, 109, 139, 151, 167, 173, 181, 281,
 ]
@@ -47,11 +49,44 @@ def _candidates_for_min_n(min_n: int) -> List[int]:
 	return primes
 
 
+def _augment(n: int, base: List[Point], p: int) -> List[Point]:
+	"""Combine algebraic safe-subset / hyperbola-union with a short greedy polish.
+
+	Subset search is cheap once individually-ok pools are filtered (~O(10–50)
+	vertices). For moderate primes, also try a ±1-filtered second hyperbola.
+	"""
+	candidates: List[List[Point]] = []
+
+	exact_limit = 24 if p <= 120 else 18
+	subset_pts, _stats = max_safe_augmentation(n, base, exact_limit=exact_limit)
+	candidates.append(subset_pts)
+
+	# Hyperbola-union is cheap for p≲120; skip on huge boards in this VM budget.
+	if p <= 120:
+		_n2, union_pts, _ust = try_hyperbola_unions(p, time_limit_s=min(6.0, 0.04 * p + 1.0))
+		candidates.append(union_pts)
+
+	best = max(candidates, key=len)
+	budget = min(6.0, 0.015 * p + 1.0)
+	polished = greedy_augment(
+		n,
+		best,
+		time_limit_s=budget,
+		seed=p,
+		prefer_four_constraint=True,
+	)
+	ok, _ = verify_claim(n, polished)
+	if ok and len(polished) >= len(best):
+		return polished
+	ok2, _ = verify_claim(n, best)
+	return best if ok2 else list(base)
+
+
 def solution(min_n: int) -> Tuple[int, List[Point]]:
 	"""Return (n, points) with no three collinear and n in [min_n, 2*min_n].
 
-	Tries HJSW and HJSW+greedy for admissible primes. Updates _LAST_N so
-	subsequent calls use strictly larger n.
+	Tries HJSW + algebraic subset + short greedy for admissible primes.
+	Updates _LAST_N so subsequent calls use strictly larger n.
 	"""
 	global _LAST_N
 	if min_n < 1:
@@ -61,18 +96,18 @@ def solution(min_n: int) -> Tuple[int, List[Point]]:
 	best_pts: List[Point] = []
 	best_ratio = -1.0
 
-	for p in _candidates_for_min_n(min_n):
+	# Bound how many primes we try so large min_n cannot blow the 60s budget.
+	cands = _candidates_for_min_n(min_n)
+	# Prefer smaller boards first (faster verify / subset).
+	cands = sorted(cands)[:8]
+
+	for p in cands:
 		n, base = hjsw(p)
 		ok, _ = verify_claim(n, base)
 		if not ok:
 			continue
-		# Time budget scales mildly with p but stays under ~1 minute total.
-		budget = min(20.0, 0.05 * p + 2.0)
-		aug = greedy_augment(n, base, time_limit_s=budget, seed=p, prefer_four_constraint=True)
-		ok2, _ = verify_claim(n, aug)
-		pts = aug if ok2 else base
+		pts = _augment(n, list(base), p)
 		r = _ratio(n, pts)
-		# Prefer ratio > 1.55 when possible; otherwise best ratio then size.
 		score = (1 if r > 1.55 else 0, r, len(pts))
 		best_score = (1 if best_ratio > 1.55 else 0, best_ratio, len(best_pts))
 		if best_n is None or score > best_score:
