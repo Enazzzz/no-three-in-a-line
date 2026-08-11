@@ -1,27 +1,36 @@
 # Theorem — single hyperbola has no non-primary 3-line
 
-**Status:** proved for the `n=2p` board lifts used in this repo.  
-**Code:** `research/proof_single_h.py` (lemma checks)  
-**Data:** `data/proof_single_h_scan.csv`, `data/single_h_clean_scan.csv`
+**Status:** proved for board size `n ≤ 2p` (sharp). The classical HJSW
+setting `n = 2p` is the largest multiple where every `F_p^*` residue has at
+most two lifts.  
+**Code:** `research/proof_single_h.py`, `research/ambient.py`  
+**Data:** `data/proof_single_h_scan.csv`, `data/single_h_clean_scan.csv`,
+`data/ambient_sharp_scan.csv`
 
 ## Statement
 
-Let `p` be an odd prime, `n = 2p`, and `c ∈ {1,…,p−1}`. Define
+Let `p` be an odd prime, `n ≤ 2p`, and `c ∈ {1,…,p−1}`. Define
 
 ```
 H(c) = { (x,y) ∈ {1,…,n}² : xy ≡ c (mod p),  p ∤ x, p ∤ y }.
 ```
 
 Equivalently, writing residues `r,s ∈ {1,…,p−1}` with `rs ≡ c (mod p)` and
-lift bits `a,b ∈ {0,1}`,
+lift bits `a,b ∈ {0,1}` (only these occur when `n ≤ 2p`),
 
 ```
-H(c) = { (r + a p,  s + b p) }.
+H(c) = { (r + a p,  s + b p) : r + a p ≤ n, s + b p ≤ n }.
 ```
 
 **Theorem.** Every Euclidean line that contains at least three points of
 `H(c)` is a **primary** line: horizontal, vertical, or of slope `±1`.
 In particular, `H(c)` has no 3-term progression on any other slope.
+
+**Sharpness.** The lift-bit restriction `a,b ∈ {0,1}` fails as soon as
+`n ≥ 2p+1`: the residue `r=1` admits lifts `1, 1+p, 1+2p`. Same-residue
+chords can then have slope `1/2` (non-primary), and scans show
+`nonprimary_ge3 > 0` at `n=2p+1` for every odd prime checked through 79.
+So `n=2p` is the maximal board size compatible with the two-lift argument.
 
 ## Lemmas
 
@@ -117,12 +126,14 @@ certificates for the identities, not a substitute for the proof.
 
 ## What this closes
 
-- Single-`H` pools need only **primary** repair; they are already all-slope
-  clean.
+- Single-`H` pools on `n ≤ 2p` need only **primary** repair; they are already
+  all-slope clean.
 - Multi-`H` non-primary damage is entirely **cross-residue / mixed**.
+- Ambient redesign to `n > 2p` with the **same** modulus `p` immediately
+  loses single-`H` cleanliness (`FINDINGS_AMBIENT.md`).
 
 ## What this does not close
 
 - It does not beat HJSW density.
-- It does not prove `LB ≥ surplus` for multi-`H` primary optima (still open
-  as a uniform-in-`p` inequality, though empirically clean for `p≥17`).
+- It does not prove `LB ≥ surplus` for multi-`H` primary optima as a uniform
+  theorem for all max-primary sets (see `PROOF_LB_SURPLUS.md`).
