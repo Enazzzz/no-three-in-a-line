@@ -11,6 +11,7 @@
 | `primary_repair_scan.csv` | Exact primary repair pipeline vs HJSW/subset |
 | `primary_surplus_diag.csv` | Max primary surplus and all-slope repair loss |
 | `allslope_hitting_scan.csv` | Hitting LB/UB vs primary surplus over HJSW |
+| `structured_schedule_scan.csv` | Band/block/chessboard schedules vs raw LB |
 
 Always re-verify configurations with `research.verify.verify_claim`.
 See `docs/FINDINGS*.md`.

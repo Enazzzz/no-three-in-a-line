@@ -67,3 +67,9 @@ Timeline is approximate; cloud VMs were wiped mid-work.
 - Disjoint-excess LB on general-slope deletions vs primary surplus
 - For p≥17, LB > surplus (gap widens with p); surplus cannot survive repair
 - Posted: `docs/FINDINGS_ALLSLOPE_HITTING.md`, `data/allslope_hitting_scan.csv`
+
+## Phase 11 — Structured geometric schedules
+
+- column/row bands, T2/M partition, chessboard residue coloring
+- LB ≥ surplus on all scanned primes; no asymptotic escape
+- Posted: `docs/FINDINGS_STRUCTURED.md`, `data/structured_schedule_scan.csv`

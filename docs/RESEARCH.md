@@ -89,7 +89,7 @@ constitute an asymptotic breakthrough.
 
 See `ALGEBRAIC_ADDABILITY.md` and **`FINDINGS.md`**.
 
-Short version (2026-08-11): raw multi-hyperbola primary packing can beat HJSW
-size, but for `p≥17` a deletion lower bound on non-primary lines already
-exceeds that surplus — so the surplus cannot survive. See FINDINGS*.md.
-Next leverage is algebraic control of arbitrary slopes, not better deletion.
+Short version (2026-08-11): raw and geometrically structured multi-hyperbola
+pools both see deletion LBs cancel any primary surplus over HJSW. Next leverage
+is algebraic control of which non-primary slopes can meet thrice — or a proof
+of `LB≥surplus` for these pools. See FINDINGS*.md.

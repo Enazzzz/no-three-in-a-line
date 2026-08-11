@@ -99,6 +99,12 @@ See **`FINDINGS_ALLSLOPE_HITTING.md`**. For `p≥17`, a disjoint-excess lower
 bound on mandatory general-slope deletions **already exceeds** the primary
 surplus over HJSW — so the surplus cannot survive optimal repair.
 
+## Follow-up: structured schedules
+
+See **`FINDINGS_STRUCTURED.md`**. Column/row bands, T2/M partition, and
+chessboard residue schedules still satisfy `LB ≥ surplus` on all scanned
+primes; disjoint supports do not remove the non-primary obstruction.
+
 ## Repro
 
 ```bash
