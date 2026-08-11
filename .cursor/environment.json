@@ -1,0 +1,17 @@
+{
+	"name": "No-Three-in-Line Research",
+	"install": "pip3 install --user -r distributed/requirements.txt",
+	"ports": [
+		{
+			"name": "coordinator",
+			"port": 8000
+		}
+	],
+	"terminals": [
+		{
+			"name": "coordinator",
+			"command": "cd distributed && PYTHONPATH=\"$PWD\" NTIL_DB_PATH=/tmp/ntil_coordinator.sqlite3 python3 -m uvicorn coordinator.server:app --host 0.0.0.0 --port 8000",
+			"description": "FastAPI volunteer-compute coordinator + leaderboard web UI on http://localhost:8000 (independently verifies every claim before it reaches the leaderboard)."
+		}
+	]
+}
