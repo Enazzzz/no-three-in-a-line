@@ -33,10 +33,11 @@ Detail and data live in the linked write-ups; this file is the map.
    Fair local search there still only ties / +O(1) vs polished HJSW.
    Ambient primary packings can violate `LB ≥ surplus` (pool-dependent).
 
-**Honest status:** the obstruction map is much clearer; the asymptotic
-record is unchanged. Current priority is a **counting proof** of
-Conjecture B (or B1 + a non-B2 gap). The B1/B2 split is only a certificate;
-B2 has no single-H provenance.
+**Honest status:** obstruction map much clearer; asymptotic record unchanged.
+**This campaign is closed** at a clean pause: two theorems + board-pool
+Certificate B′; ambient multi-`H` fair-baseline dead end; B2/mono-cap proof
+shortcuts ruled out. Conjecture B remains open as a counting problem—not as
+an invitation to redo closed routes.
 
 
 ---
@@ -166,19 +167,16 @@ triples whose mandatory deletions exceed it.
 
 ---
 
-## Open directions (higher leverage)
+## Open directions (if resuming)
 
-1. **Prove Conjecture B** for board multi-`H` pools — preferably by a direct
-   counting argument for `LB ≥ surplus`. The B1/B2 split is certified but
-   B2 has **no** single-H provenance; mono-cap↛B2
-   (`docs/PROOF_LB_SURPLUS.md`, `data/b2_provenance_scan.csv`).
-2. Optional: prove mono-color Conjecture M (`|T|≤2(p+1_{p≡1 mod 4})` on board
-   `H(c)`) as its own geometric lemma — not as a route to B2.
-3. **New algebraic family + cut** remains secondary while the goal is a
-   theorem from the obstruction map.
+1. **Direct counting proof** of Conjecture B / Certificate B′ — not via
+   B2←mono-cap, not via an upper bound on minority mass alone
+   (`PROOF_LB_SURPLUS.md` closeout).
+2. Optional decoupled lemma: Conjecture M (still a **certificate**, not a
+   theorem).
+3. New algebraic family + modulus co-designed with `n` (construction track).
 
-Still out of scope as a “solution”: claiming density `> 3/2 + ε` without a
-construction or proof.
+Still out of scope: claiming density `> 3/2 + ε` without a construction or proof.
 
 ---
 

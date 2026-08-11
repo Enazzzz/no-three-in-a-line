@@ -144,13 +144,34 @@ of the single-hyperbola theorem. Provenance check
 **Verdict:** treat B2 as an independent conjecture (or drop it as a proof
 route). Do not advertise the 0.7 ratio as single-H provenance.
 
+### Further negatives (session closeout)
+
+4. **Drop the mono-cap → B2 route.** The naive test
+   `⌊m/3⌋ ≥ cap + m − 3(p−1)` holds on only **4/60** multi-H rows
+   (`p≤61`). Those “easy” rows are all **two-color**, low surplus
+   (`−1…+4`), and small minority density (`m/p ∈ [1.17, 1.38]`). The
+   **56/60** hard rows have larger `m` (median `m/p ≈ 2`); all three-color
+   packs in the scan are hard. So the route only “works” where B2 is least
+   interesting.
+
+5. **An upper bound on `m` alone cannot prove B2.** B2 needs
+   `⌊m/3⌋ ≥ surplus`; the LHS grows with `m`. Dangerous packs are
+   *small* `m` with large surplus. A ceiling `m ≤ U(p)` does not help those
+   cases. A useful direction would be a **lower** bound on `m` relative to
+   surplus (or a direct `surplus ≤ m/3` coupling)—not an upper bound on `m`.
+
+6. **B2 is false for arbitrary primary-feasible sets.** Example:
+   `p=17`, `C={1,2,16}`, primary `|S|=58`, `M=m=29`, surplus `10 > 9=⌊m/3⌋`.
+   So B2 (and Conjecture B) need a maximality / “large primary” hypothesis;
+   Certificate B′ remains the scoped claim.
+
 ### Outline steps (older numbering)
 
 1. **Color partition.** Residues `c=xy mod p` partition `S` as `⊔_c S_c`.
 2. **Majority / minority.** As above.
 3. **Matching (→ B1).** Mixed bad lines (Theorem A) + counting → `LB ≥ ⌊m/3⌋`.
-4. **Gap.** Still need `LB ≥ surplus` (directly, or via something other than
-   the failed mono-cap→B2 route).
+4. **Gap.** Still need `LB ≥ surplus` (directly). Mono-cap→B2 and
+   `m≤U(p)`→B2 are closed as proof routes.
 
 Until there is a counting proof, Conjecture B remains open; Certificate B′
 is the working substitute for the pools this repo searches.
@@ -164,8 +185,8 @@ primary-feasible `T ⊆ H(c)` has
 |T| ≤ 2(p + 1_{p≡1 (mod 4)}).
 ```
 
-Certified for `c=1` and `5≤p≤61`. Proving M is worthwhile as hyperbola
-geometry; it is **not** a path to B2 (above).
+**Status:** **16/16 certificate** for `c=1` and `5≤p≤61` — **not a theorem**.
+Optional side geometry only; not a path to B2.
 
 ## Consequences
 
@@ -181,14 +202,11 @@ geometry; it is **not** a path to B2 (above).
 - Not a proof for every geometric mask or every primary-feasible set.
 - Not a new dense construction.
 
-## Next step
+## Status / closeout
 
-**Theorem track:** seek a **direct counting proof** of Conjecture B
-(`LB ≥ surplus` for max-primary board multi-`H`), or a counting proof of
-**B1** plus a gap argument that does **not** route through mono-cap→B2.
-
-Do **not** treat B2 as settled by the ~0.7 mono/HJSW ratio — that ratio has
-no single-H provenance and the mono cap does not imply B2.
-
-Optional side lemma: prove Conjecture M (mono primary `≤ 2(p+1_{p≡1 mod 4})`)
-as hyperbola/±1 packing geometry, explicitly decoupled from Conjecture B.
+**This proof track is paused in a clean state (2026-08-11).** Landed theorems
+and certificates stand; the B1/B2 / mono-cap / `m≤U(p)` shortcuts to a full
+proof of Conjecture B are documented negatives. A future agent that resumes
+should attempt a **direct** counting argument for Certificate B′ / Conjecture B,
+or leave the multi-`H` obstruction as certified and move to a new algebraic
+family. Do not reopen mono-cap→B2 or “upper bound on minority mass ⇒ B2.”

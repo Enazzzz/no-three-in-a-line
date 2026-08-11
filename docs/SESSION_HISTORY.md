@@ -137,3 +137,10 @@ Timeline is approximate; cloud VMs were wiped mid-work.
 - Conjecture M: mono size `2p` or `2(p+1)` by `p mod 4` (16/16 through p=61)
 - Mono cap ↛ B2 (only 4/60 rows forced); B2 is an independent conjecture
 - Posted: `research/b2_provenance.py`, `data/b2_provenance_scan.csv`
+
+## Phase 22 — Theorem-track closeout
+
+- Easy/hard split: mono-cap test only on low-`m/p` two-color low-surplus packs
+- Upper bound on minority mass alone cannot prove B2 (wrong direction)
+- B2 false for some non-max primary sets (e.g. p=17, C={1,2,16})
+- Campaign paused cleanly; NEXT_AGENT / FINDINGS_SUMMARY / PROOF_LB_SURPLUS updated
