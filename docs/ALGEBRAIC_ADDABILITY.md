@@ -1,0 +1,84 @@
+# Algebraic addability program
+
+Instead of treating HJSW augmentation as a generic independent-set /
+greedy graph problem, rewrite it algebraically.
+
+## 1. HJSW as an algebraic curve over `F_p`
+
+Fix odd prime `p`, residue `c ∈ F_p^×`, and
+
+```
+H(c,p) = { (x,y) ∈ Z² : x y ≡ c (mod p) }.
+```
+
+HJSW is (essentially) one hyperbola cut to a union of twelve affine
+half-blocks `T2`:
+
+```
+S2 = H(c,p) ∩ T2,   |S2| = 3(p−1).
+```
+
+## 2. Exact conditions for an empty cell `(x,y)`
+
+### Horizontal / vertical
+
+If row `y` already meets `S2` in ≥2 points, no third point is allowed on
+that row (same for columns). For classical HJSW, occupied residue sets
+`R_x`, `R_y` each have size `p−1`, so only a thin middle residue strip
+(corresponding to unused blocks `M`) is horiz/vert-safe.
+
+### Slope `+1`
+
+Conflict with saturated diagonals
+
+```
+D_+^{(2)}(S) = { d : |S ∩ {x' − y' = d}| ≥ 2 }.
+```
+
+On the hyperbola, `x' − y' = t − c t^{-1}` for occupied `t`, so `D_+`
+is (up to block lifts) the image of
+
+```
+f_+(t) = t − c t^{-1}.
+```
+
+### Slope `−1`
+
+Same with sums / `f_-(t) = t + c t^{-1}` and
+
+```
+D_-^{(2)}(S) = { s : |S ∩ {x' + y' = s}| ≥ 2 }.
+```
+
+## 3. Combinatorial core
+
+Let `U` be an algebraically defined candidate pool (e.g. `H(c',p) ∩ M`
+or all of `M` filtered by the four residue predicates).
+
+**Question:** How large is the largest subset of `U` that avoids a small
+menu of difference classes (here primarily four), relative to the
+structured obstacle set coming from `S2`?
+
+This is closer to additive combinatorics than to unstructured greedy
+search, and explains why prime-by-prime winner lists looked noisy.
+
+## 4. Predictions
+
+- Horiz/vert force almost all extras into `M`.
+- Inside `M`, slope `±1` are the real filter; forbidden diagonal residues
+  can cover nearly everything for large `p`, matching `~O(0.1n)` declining
+  addable counts.
+- Constant-factor improvement needs positive-density survivors after
+  **all** slopes, not only the four.
+- Positive path: change `c` or take a **union of hyperbolas**, then delete
+  carefully on slope `±1` (cf. KNS Remark 3.4).
+
+## 5. Implementation checklist
+
+1. For each prime `p`, compute `S2` and exact `R_x, R_y, D_+^{(2)}, D_-^{(2)}`.
+2. Enumerate `U ⊆ M` satisfying the four predicates.
+3. Solve max safe subset (exact for small `p`, density heuristics for large).
+4. Only then filter remaining general slopes.
+5. Log tables of survivor counts vs `p` (job for `distributed/` workers).
+
+Code helpers live in `research/algebraic.py` and `distributed/ntil/algebraic.py`.
