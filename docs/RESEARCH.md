@@ -89,8 +89,8 @@ constitute an asymptotic breakthrough.
 
 See `ALGEBRAIC_ADDABILITY.md` and **`FINDINGS.md`**.
 
-Short version (2026-08-11): HJSW-first grafts and joint pool+search (empty
-greedy / light local search on H∪parabola∪circle) only yield O(1) finite
-noise. Prefer the proof track: single-`H` non-primary cleanliness (certificate
-through p≤179 in `PROOF_SKETCH_SINGLE_H.md`) and `LB≥surplus` for multi-`H`
-primary optima. See `FINDINGS_JOINT.md`.
+Short version (2026-08-11): construction-side pool+search variants are
+saturated at O(1) noise. **Proved:** a single modular hyperbola on the
+`n=2p` board has no non-primary ≥3-line (`PROOF_SINGLE_H.md`). Next proof
+target: `LB(p)≥surplus(p)` for raw multi-`H` primary optima when `p≥17`.
+Or: a genuinely new geometric cut.

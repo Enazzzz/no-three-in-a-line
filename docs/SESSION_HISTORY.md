@@ -89,5 +89,10 @@ Timeline is approximate; cloud VMs were wiped mid-work.
 ## Phase 14 — Joint all-slope packing + single-H certificate
 
 - Empty joint greedy loses; local search only O(1) finite +1/+2 sometimes
-- Single-H non-primary clean through p≤179 (proof sketch posted)
-- Posted: `docs/FINDINGS_JOINT.md`, `docs/PROOF_SKETCH_SINGLE_H.md`
+- Posted: `docs/FINDINGS_JOINT.md`
+
+## Phase 15 — Single-H non-primary theorem
+
+- Proved: H(c) on n=2p has no non-primary ≥3-line (field incidence + lifts)
+- Machine checks through p≤97; cleanliness certificate through p≤241
+- Posted: `docs/PROOF_SINGLE_H.md`, `data/proof_single_h_scan.csv`
