@@ -9,7 +9,7 @@ Recovered research + constructions + a **certified** lightweight volunteer-compu
 | Path | Purpose |
 |------|---------|
 | `AGENT_MEMORY_DUMP.md` | Full session memory for the next agent — **delete after ingest** |
-| `docs/` | Research notes, algebraic program, distributed design, session history |
+| `docs/` | **`FINDINGS_SUMMARY.md`** (start here) + detail findings, proofs, history |
 | `research/` | Verifier, HJSW/Erdős constructions, algebraic helpers, greedy search |
 | `solution.py` | Best-effort `solution(min_n)` using HJSW + augmentation |
 | `distributed/` | Coordinator / worker / verify-before-leaderboard harness |
@@ -40,6 +40,6 @@ Workers are **never** trusted. The coordinator re-runs exact integer collinearit
 
 1. Read **`docs/FINDINGS_SUMMARY.md`** first (all findings in one place), then
    detail docs as needed.
-2. Next leverage: algebraic non-primary slope census / formal LB≥surplus
+2. Next leverage: finish Conjecture B, or new algebraic family/modulus with `n`
 3. Prefer commits on `main` (or merge feature branches) over PRs unless asked
 4. Push often — VM disk is temporary
