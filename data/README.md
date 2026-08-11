@@ -13,6 +13,7 @@
 | `allslope_hitting_scan.csv` | Hitting LB/UB vs primary surplus over HJSW |
 | `structured_schedule_scan.csv` | Band/block/chessboard schedules vs raw LB |
 | `slope_census_scan.csv` | Single-H vs union mixed-line census + mask trials |
+| `nonhyperbola_scan.csv` | Non-hyperbola / board-risk0 second pools vs polished HJSW |
 
 Always re-verify configurations with `research.verify.verify_claim`.
 See `docs/FINDINGS*.md`.

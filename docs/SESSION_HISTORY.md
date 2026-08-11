@@ -79,3 +79,9 @@ Timeline is approximate; cloud VMs were wiped mid-work.
 - Single `H(c)` has zero non-primary ≥3-lines; unions are all-mixed
 - Mixed-kill and risk0 second-hyperbola masks lose to polished HJSW
 - Posted: `docs/FINDINGS_SLOPE_CENSUS.md`, `data/slope_census_scan.csv`
+
+## Phase 13 — Non-hyperbola second families
+
+- Parabola/circle/Pell/exp/line + board risk0 ceiling + delete-k unlock
+- All tie or lose to polished HJSW; bottleneck is primary capacity, not curve
+- Posted: `docs/FINDINGS_NONHYPERBOLA.md`, `data/nonhyperbola_scan.csv`

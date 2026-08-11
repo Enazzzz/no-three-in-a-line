@@ -89,9 +89,8 @@ constitute an asymptotic breakthrough.
 
 See `ALGEBRAIC_ADDABILITY.md` and **`FINDINGS.md`**.
 
-Short version (2026-08-11): raw and geometrically structured multi-hyperbola
-pools both see deletion LBs cancel any primary surplus over HJSW. Slope census
-shows a single `H(c)` is already non-primary-clean; all damage in unions is
-**mixed**. Mixed-kill / risk0 masks on a second hyperbola still lose to polished
-HJSW. Next leverage: prove the single-`H` law, or seek a **non-hyperbola**
-second family with sparse mixed triples. See `FINDINGS_SLOPE_CENSUS.md`.
+Short version (2026-08-11): raw/structured multi-hyperbola pools and
+HJSW-first second-family enrichment (hyperbola or otherwise, even board-wide
+risk0) all fail to beat polished HJSW in a way that scales. Next leverage:
+**joint** two-family designs, or proofs (single-`H` cleanliness;
+`LB≥surplus` for multi-`H` primary optima). See `FINDINGS_NONHYPERBOLA.md`.
