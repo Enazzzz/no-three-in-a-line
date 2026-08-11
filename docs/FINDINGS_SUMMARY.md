@@ -34,7 +34,9 @@ Detail and data live in the linked write-ups; this file is the map.
    Ambient primary packings can violate `LB ≥ surplus` (pool-dependent).
 
 **Honest status:** the obstruction map is much clearer; the asymptotic
-record is unchanged.
+record is unchanged. Current priority is turning Certificate B′ into a
+theorem via lemmas B1/B2, not hunting another finite polish gain.
+
 
 ---
 
