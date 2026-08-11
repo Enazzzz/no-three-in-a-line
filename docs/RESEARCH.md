@@ -87,5 +87,10 @@ constitute an asymptotic breakthrough.
 
 ## Preferred research direction
 
-See `ALGEBRAIC_ADDABILITY.md`: residue constraints for the four primary
-difference classes, then largest algebraic subset avoiding those classes.
+See `ALGEBRAIC_ADDABILITY.md` and **`FINDINGS.md`**.
+
+Short version (2026-08-11): polishing HJSW (subset MIS) and grafting a second
+hyperbola with `±1` deletion land at nearly the same `~1.56n` ratios on
+`p≤181`. Second-hyperbola points are almost never all-slope-safe vs S₂
+(`indiv_ok` usually 0–2). Next step is simultaneous / delete-first
+multi-hyperbola design — not more HJSW polishing.

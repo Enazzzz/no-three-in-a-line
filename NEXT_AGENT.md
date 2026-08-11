@@ -1,10 +1,9 @@
 # Next agent checklist
 
-1. **Read** `AGENT_MEMORY_DUMP.md` fully into context.
-2. **Delete** `AGENT_MEMORY_DUMP.md`.
-3. **Commit** `chore: remove AGENT_MEMORY_DUMP after ingest` and **push**.
-4. Revoke any leftover human-provided `GH_TOKEN` / PAT (human action).
-5. Continue algebraic survivor-count tables and distributed worker runs.
-6. Commit and push frequently — cloud VMs wipe uncommitted work.
-
-Do not claim an asymptotic `>1.55n` breakthrough unless you have a real construction or proof.
+1. Read `docs/FINDINGS.md` (hyperbola-union step results).
+2. Do **not** spend a long time re-polishing classical HJSW or grafting a single
+   second hyperbola onto S₂ — that path is measured and saturated for now.
+3. Next constructive attempt: **simultaneous / delete-first multi-hyperbola**
+   designs (see FINDINGS § “Concrete next step”).
+4. Commit and push frequently — cloud VMs wipe uncommitted work.
+5. Do not claim an asymptotic `>1.55n` breakthrough without a real construction or proof.

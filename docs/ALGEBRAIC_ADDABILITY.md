@@ -110,9 +110,10 @@ classical HJSW alone.
 
 See `data/addability_scan.csv` and `data/subset_scan.csv`.
 
-## 7. Hyperbola-union smoke (same day)
+## 7. Hyperbola-union step (findings)
 
-`research/hyperbola_union.py` tries a second residue `c1` with ±1 deletion.
-On small primes it slightly beats pure HJSW-subset (e.g. `p=31`: union
-ratio ≈1.581 vs subset ≈1.548). Still additive, not asymptotic — but a
-better seed than polishing a single hyperbola.
+Full write-up: **`docs/FINDINGS.md`**.
+
+Summary: HJSW-seeded second-hyperbola ±1 filtering does **not** systematically
+beat algebraic subset MIS. Second-hyperbola individually-ok counts vs S₂ are
+typically 0–2. Next: simultaneous or delete-first multi-hyperbola designs.

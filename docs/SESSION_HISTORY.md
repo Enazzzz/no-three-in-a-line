@@ -38,5 +38,12 @@ Timeline is approximate; cloud VMs were wiped mid-work.
 - Slope-table O(m) individual addability; exact/greedy MIS on tiny ok-pools
 - Empirically: 4-constraint survivors grow with p, but all-slope survivors stay O(10–50)
 - Additive gains of ~4–31 points; some ratios >1.55; no asymptotic breakthrough
-- Hyperbola-union ±1 filter slightly beats single-hyperbola subset on small p
 - Data: `data/addability_scan.csv`, `data/subset_scan.csv`
+
+## Phase 7 — Hyperbola-union next step + findings post
+
+- Compared HJSW / subset / ±1-filtered multi-hyperbola unions on p≤181
+- Union does not systematically beat subset (13–5 in subset’s favor; Δ≈0)
+- Root cause: H(c₁) vs HJSW has individually-ok counts typically 0–2
+- Posted write-up: `docs/FINDINGS.md`
+- Next direction: simultaneous / delete-first multi-hyperbola designs
