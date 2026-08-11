@@ -1,7 +1,7 @@
 # Next agent checklist
 
-1. Read `docs/FINDINGS*.md`, `docs/PROOF_SINGLE_H.md`, `docs/PROOF_LB_SURPLUS.md`,
-   `docs/FINDINGS_AMBIENT.md`.
+1. Read **`docs/FINDINGS_SUMMARY.md`** (one-doc synthesis), then detail
+   `FINDINGS*.md` / `PROOF_*.md` as needed.
 2. Do **not** redo saturated paths:
    - HJSW polish / second-family grafts / T2 block-sacrifice on S₂
    - unstructured delete-first / exact primary packing hoping repair helps

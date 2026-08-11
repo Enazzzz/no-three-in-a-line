@@ -87,7 +87,7 @@ constitute an asymptotic breakthrough.
 
 ## Preferred research direction
 
-See `ALGEBRAIC_ADDABILITY.md` and **`FINDINGS.md`**.
+**Start here:** [`FINDINGS_SUMMARY.md`](FINDINGS_SUMMARY.md) — full synthesis.
 
 Short version (2026-08-11): single-`H` cleanliness holds exactly for
 `n≤2p` (sharp — fails at `n=2p+1`). Multi-`H` max-primary `LB≥surplus`
