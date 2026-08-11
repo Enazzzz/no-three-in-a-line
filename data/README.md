@@ -17,6 +17,7 @@
 | `joint_pack_scan.csv` | Joint empty-greedy / local-search packs vs polished HJSW |
 | `single_h_clean_scan.csv` | Single-H primary vs non-primary ≥3-line census |
 | `proof_single_h_scan.csv` | Lemma checks for the single-H non-primary theorem |
+| `lb_surplus_scan.csv` | LB − surplus certificates for multi-H primary packings |
 
 Always re-verify configurations with `research.verify.verify_claim`.
-See `docs/FINDINGS*.md` and `docs/PROOF_SINGLE_H.md`.
+See `docs/FINDINGS*.md`, `docs/PROOF_SINGLE_H.md`, `docs/PROOF_LB_SURPLUS.md`.

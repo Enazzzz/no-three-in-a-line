@@ -96,3 +96,10 @@ Timeline is approximate; cloud VMs were wiped mid-work.
 - Proved: H(c) on n=2p has no non-primary ≥3-line (field incidence + lifts)
 - Machine checks through p≤97; cleanliness certificate through p≤241
 - Posted: `docs/PROOF_SINGLE_H.md`, `data/proof_single_h_scan.csv`
+
+## Phase 16 — LB ≥ surplus (multi-H primary packings)
+
+- Proved: bad lines are always mixed (corollary of single-H)
+- Counterexample: in-pool NTIL can have surplus>0 with LB=0 (not universal)
+- Certificate: best-of primary packings, all 80 cases p∈[17,79] have LB≥surplus
+- Posted: `docs/PROOF_LB_SURPLUS.md`, `data/lb_surplus_scan.csv`

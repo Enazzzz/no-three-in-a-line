@@ -89,8 +89,8 @@ constitute an asymptotic breakthrough.
 
 See `ALGEBRAIC_ADDABILITY.md` and **`FINDINGS.md`**.
 
-Short version (2026-08-11): construction-side pool+search variants are
-saturated at O(1) noise. **Proved:** a single modular hyperbola on the
-`n=2p` board has no non-primary ≥3-line (`PROOF_SINGLE_H.md`). Next proof
-target: `LB(p)≥surplus(p)` for raw multi-`H` primary optima when `p≥17`.
-Or: a genuinely new geometric cut.
+Short version (2026-08-11): **Proved** single-`H` non-primary cleanliness.
+**Certified** `LB≥surplus` for algorithmic max-primary multi-`H` packings on
+`17≤p≤79` (`PROOF_LB_SURPLUS.md`); the claim is false for arbitrary
+primary-feasible sets (in-pool NTIL counterexamples). Next: finish the
+max-primary matching proof, or invent a non-multi-`H` construction.

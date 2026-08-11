@@ -70,8 +70,10 @@ Shift from deletion analysis to **construction constraints**: design point
 sets (masks / residue schedules) whose non-primary line loads are capped by
 algebra, then measure whether primary density can still exceed `3(p−1)`.
 
-Optional analytic follow-up: prove `LB(p) ≥ surplus(p)` for these pools for
-all odd primes `p≥17` (the table suggests a clean inequality).
+Optional analytic follow-up: prove `LB(p) ≥ surplus(p)` for **maximum**
+primary packings of these pools for all odd primes `p≥17`. See
+`docs/PROOF_LB_SURPLUS.md` for the precise statement, NTIL counterexamples
+to the universal primary-feasible claim, and a certificate through `p≤79`.
 
 ## Repro
 

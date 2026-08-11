@@ -1,0 +1,5 @@
+# NTIL counterexamples to 'every primary-feasible S' universality:
+{'p': 17, 'hjsw': 48, 'ntil_in_pool': 50, 'surplus': 2, 'lb': 0, 'bad_lines': 0, 'verified_ntil': True, 'reason': 'ok', 'shows_universal_claim_false': 1}
+{'p': 19, 'hjsw': 54, 'ntil_in_pool': 56, 'surplus': 2, 'lb': 0, 'bad_lines': 0, 'verified_ntil': True, 'reason': 'ok', 'shows_universal_claim_false': 1}
+{'p': 31, 'hjsw': 90, 'ntil_in_pool': 91, 'surplus': 1, 'lb': 0, 'bad_lines': 0, 'verified_ntil': True, 'reason': 'ok', 'shows_universal_claim_false': 1}
+# certificate rows p>=17: 80, failures: 0
