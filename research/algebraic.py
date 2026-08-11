@@ -1,9 +1,18 @@
-"""Residue-constraint / algebraic addability helpers for HJSW augmentation."""
+"""Residue-constraint / algebraic addability helpers for HJSW augmentation.
+
+Horiz/vert safety uses the true no-three-in-line rule: a row (resp. column)
+may hold at most two points. Candidates are therefore rejected only when the
+row or column is already *saturated* (≥2), not merely occupied. The older
+“must be empty” filter under-counted addable cells by roughly an order of
+magnitude and made middle-band survivor tables look artificially empty.
+"""
 
 from __future__ import annotations
 
-from collections import defaultdict
-from typing import Dict, List, Sequence, Set, Tuple
+from collections import Counter, defaultdict
+from typing import Dict, List, Optional, Sequence, Set, Tuple
+
+from research.constructions import ambient_grid, middle_blocks
 
 Point = Tuple[int, int]
 
@@ -13,6 +22,24 @@ def occupied_rows_cols(points: Sequence[Point]) -> Tuple[Set[int], Set[int]]:
 	rows = {y for _, y in points}
 	cols = {x for x, _ in points}
 	return rows, cols
+
+
+def row_col_counts(points: Sequence[Point]) -> Tuple[Dict[int, int], Dict[int, int]]:
+	"""Return per-row and per-column occupancy counts."""
+	rows = Counter(y for _, y in points)
+	cols = Counter(x for x, _ in points)
+	return dict(rows), dict(cols)
+
+
+def saturated_rows_cols(
+	points: Sequence[Point],
+	threshold: int = 2,
+) -> Tuple[Set[int], Set[int]]:
+	"""Rows / columns that already hold ≥ threshold points (cannot accept more)."""
+	rows, cols = row_col_counts(points)
+	sat_rows = {y for y, c in rows.items() if c >= threshold}
+	sat_cols = {x for x, c in cols.items() if c >= threshold}
+	return sat_rows, sat_cols
 
 
 def difference_counts(points: Sequence[Point]) -> Tuple[Dict[int, int], Dict[int, int]]:
@@ -55,11 +82,51 @@ def f_minus(t: int, c: int, p: int) -> int:
 	return (t + (c * inv)) % p
 
 
-def middle_band_candidates(n: int, p: int, occupied_rows: Set[int], occupied_cols: Set[int]) -> List[Point]:
-	"""List empty cells whose row and column are currently unoccupied.
+def translated_middle_blocks(p: int) -> Set[Point]:
+	"""Middle blocks M mapped into the same [1, 2p]² board as hjsw()."""
+	xmin, _, ymin, _ = ambient_grid(p)
+	shift_x = 1 - xmin
+	shift_y = 1 - ymin
+	n = 2 * p
+	out: Set[Point] = set()
+	for x, y in middle_blocks(p):
+		bx, by = x + shift_x, y + shift_y
+		if 1 <= bx <= n and 1 <= by <= n:
+			out.add((bx, by))
+	return out
 
-	These are the horiz/vert-safe candidates (necessary, not sufficient).
+
+def unsaturated_hv_candidates(
+	n: int,
+	points: Sequence[Point],
+	pool: Optional[Sequence[Point]] = None,
+) -> List[Point]:
+	"""Empty cells whose row and column each still have room (<2 points)."""
+	base_set = set(map(tuple, points))
+	sat_rows, sat_cols = saturated_rows_cols(list(map(tuple, points)))
+	if pool is None:
+		pool = [(x, y) for x in range(1, n + 1) for y in range(1, n + 1)]
+	out: List[Point] = []
+	for x, y in pool:
+		if (x, y) in base_set:
+			continue
+		if y in sat_rows or x in sat_cols:
+			continue
+		out.append((x, y))
+	return out
+
+
+def middle_band_candidates(
+	n: int,
+	p: int,
+	occupied_rows: Set[int],
+	occupied_cols: Set[int],
+) -> List[Point]:
+	"""Backward-compatible wrapper: cells in fully empty rows and columns.
+
+	Prefer unsaturated_hv_candidates / four_constraint_survivors for research.
 	"""
+	# Kept for older call sites; deliberately stricter than the true 2-per-line rule.
 	out: List[Point] = []
 	for x in range(1, n + 1):
 		if x in occupied_cols:
@@ -76,12 +143,14 @@ def four_constraint_survivors(
 	base: Sequence[Point],
 	pool: Sequence[Point] | None = None,
 ) -> List[Point]:
-	"""Cells that do not hit saturated horiz/vert/slope±1 classes of base.
+	"""Cells that avoid saturated horiz/vert/slope±1 classes of base.
 
+	Horiz/vert: reject only if the row or column already has ≥2 points.
+	Slope ±1: reject if the corresponding diagonal already has ≥2 points.
 	If pool is None, uses all empty cells on the n×n board.
 	"""
 	base_set = set(map(tuple, base))
-	rows, cols = occupied_rows_cols(list(map(tuple, base)))
+	sat_rows, sat_cols = saturated_rows_cols(list(map(tuple, base)))
 	sat_plus, sat_minus = saturated_differences(list(map(tuple, base)))
 	if pool is None:
 		pool = [(x, y) for x in range(1, n + 1) for y in range(1, n + 1) if (x, y) not in base_set]
@@ -90,7 +159,7 @@ def four_constraint_survivors(
 	for x, y in pool:
 		if (x, y) in base_set:
 			continue
-		if y in rows or x in cols:
+		if y in sat_rows or x in sat_cols:
 			continue
 		if (x - y) in sat_plus:
 			continue
@@ -102,21 +171,37 @@ def four_constraint_survivors(
 
 def summarize_addability(n: int, p: int, base: Sequence[Point]) -> dict:
 	"""Return counts useful for algebraic augmentation experiments."""
-	rows, cols = occupied_rows_cols(list(map(tuple, base)))
+	row_c, col_c = row_col_counts(list(map(tuple, base)))
+	sat_rows, sat_cols = saturated_rows_cols(list(map(tuple, base)))
 	sat_plus, sat_minus = saturated_differences(list(map(tuple, base)))
 	rx, ry = residue_sets(list(map(tuple, base)), p)
-	mid = middle_band_candidates(n, p, rows, cols)
-	surv = four_constraint_survivors(n, base, mid)
+	hv = unsaturated_hv_candidates(n, base)
+	surv = four_constraint_survivors(n, base, hv)
+	mid = translated_middle_blocks(p)
+	mid_pool = [pt for pt in mid if pt not in set(map(tuple, base))]
+	mid_hv = unsaturated_hv_candidates(n, base, mid_pool)
+	mid_surv = four_constraint_survivors(n, base, mid_hv)
 	return {
 		"n": n,
 		"p": p,
 		"base_size": len(base),
-		"occupied_rows": len(rows),
-		"occupied_cols": len(cols),
+		"occupied_rows": len(row_c),
+		"occupied_cols": len(col_c),
+		"sat_rows": len(sat_rows),
+		"sat_cols": len(sat_cols),
+		"rows_with_one": sum(1 for c in row_c.values() if c == 1),
+		"cols_with_one": sum(1 for c in col_c.values() if c == 1),
 		"sat_plus": len(sat_plus),
 		"sat_minus": len(sat_minus),
 		"residues_x": len(rx),
 		"residues_y": len(ry),
-		"middle_hv_safe": len(mid),
+		"hv_safe": len(hv),
 		"four_constraint_survivors": len(surv),
+		"middle_cells": len(mid_pool),
+		"middle_hv_safe": len(mid_hv),
+		"middle_four_survivors": len(mid_surv),
+		# Legacy alias: previously meant “fully empty row∩col”; now mirrors hv_safe.
+		"middle_hv_safe_legacy_empty": len(
+			middle_band_candidates(n, p, set(row_c), set(col_c))
+		),
 	}
