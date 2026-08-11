@@ -103,3 +103,9 @@ Timeline is approximate; cloud VMs were wiped mid-work.
 - Counterexample: in-pool NTIL can have surplus>0 with LB=0 (not universal)
 - Certificate: best-of primary packings, all 80 cases p∈[17,79] have LB≥surplus
 - Posted: `docs/PROOF_LB_SURPLUS.md`, `data/lb_surplus_scan.csv`
+
+## Phase 17 — HJSW T2 block sacrifice
+
+- Drop one T2 half-block (± M/H refill) then polish vs multi-seed baseline
+- Only O(1) gains; comparable to random same-size deletion
+- Posted: `docs/FINDINGS_BLOCK_SACRIFICE.md`, `data/block_sacrifice_scan.csv`

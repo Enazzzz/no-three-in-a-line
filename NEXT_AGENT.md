@@ -6,13 +6,11 @@
    - unstructured delete-first / exact primary packing hoping repair helps
    - geometric band/block/chessboard residue schedules alone
    - mixed-line kill / risk0 / board ceiling / delete-k / joint pool+search
-   - re-proving single-`H` non-primary cleanliness
-   - re-scanning LB≥surplus for default multi-`H` primary packings (p≤79
-     certified; universal primary-feasible claim is false — see proof doc)
+   - re-proving single-`H` cleanliness / re-scanning LB≥surplus certificates
+   - HJSW T2 block-sacrifice + M refill + polish (O(1) noise ≈ random drop)
 3. Higher-leverage next attempts:
-   - Finish the matching bound so Conjecture B in `PROOF_LB_SURPLUS.md`
-     becomes a theorem for all max-primary `S`
-   - New geometric cuts / constructions that are **not** multi-`H`
-     primary-then-repair variants
+   - Finish Conjecture B matching bound in `PROOF_LB_SURPLUS.md`
+   - Ambient redesign: constructions on boards other than `n=2p`, or
+     co-designed curve+cut pairs that are not S₂ surgery
 4. Commit and push frequently; prefer landing on `main` over opening PRs unless asked.
 5. Do not claim an asymptotic `>1.55n` breakthrough without a real construction or proof.

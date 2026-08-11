@@ -89,8 +89,8 @@ constitute an asymptotic breakthrough.
 
 See `ALGEBRAIC_ADDABILITY.md` and **`FINDINGS.md`**.
 
-Short version (2026-08-11): **Proved** single-`H` non-primary cleanliness.
-**Certified** `LB≥surplus` for algorithmic max-primary multi-`H` packings on
-`17≤p≤79` (`PROOF_LB_SURPLUS.md`); the claim is false for arbitrary
-primary-feasible sets (in-pool NTIL counterexamples). Next: finish the
-max-primary matching proof, or invent a non-multi-`H` construction.
+Short version (2026-08-11): single-`H` cleanliness proved; multi-`H`
+max-primary `LB≥surplus` certified for `p≤79`. HJSW T2 block-sacrifice is
+only O(1) polish noise (`FINDINGS_BLOCK_SACRIFICE.md`). Next: finish
+Conjecture B, or redesign the ambient board / curve+cut pair — not more S₂
+surgery.
