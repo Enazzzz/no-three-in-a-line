@@ -38,8 +38,7 @@ Workers are **never** trusted. The coordinator re-runs exact integer collinearit
 
 ## Next agent
 
-1. Read **`docs/FINDINGS_SUMMARY.md`** first (all findings in one place), then
-   detail docs as needed.
-2. Next leverage: finish Conjecture B, or new algebraic family/modulus with `n`
-3. Prefer commits on `main` (or merge feature branches) over PRs unless asked
-4. Push often — VM disk is temporary
+1. Read **`docs/FINDINGS_SUMMARY.md`** then **`NEXT_AGENT.md`** (campaign paused cleanly).
+2. Do not reopen closed proof shortcuts (mono-cap→B2, upper-bound-on-`m`→B2).
+3. Prefer commits on `main` (or merge feature branches) over PRs unless asked.
+4. Push often — VM disk is temporary.
