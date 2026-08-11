@@ -34,8 +34,9 @@ Detail and data live in the linked write-ups; this file is the map.
    Ambient primary packings can violate `LB ≥ surplus` (pool-dependent).
 
 **Honest status:** the obstruction map is much clearer; the asymptotic
-record is unchanged. Current priority is turning Certificate B′ into a
-theorem via lemmas B1/B2, not hunting another finite polish gain.
+record is unchanged. Current priority is a **counting proof** of
+Conjecture B (or B1 + a non-B2 gap). The B1/B2 split is only a certificate;
+B2 has no single-H provenance.
 
 
 ---
