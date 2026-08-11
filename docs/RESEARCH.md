@@ -89,8 +89,7 @@ constitute an asymptotic breakthrough.
 
 See `ALGEBRAIC_ADDABILITY.md` and **`FINDINGS.md`**.
 
-Short version (2026-08-11): single-`H` cleanliness proved; multi-`H`
-max-primary `LB≥surplus` certified for `p≤79`. HJSW T2 block-sacrifice is
-only O(1) polish noise (`FINDINGS_BLOCK_SACRIFICE.md`). Next: finish
-Conjecture B, or redesign the ambient board / curve+cut pair — not more S₂
-surgery.
+Short version (2026-08-11): single-`H` cleanliness holds exactly for
+`n≤2p` (sharp — fails at `n=2p+1`). Multi-`H` max-primary `LB≥surplus`
+certified for `p≤79`. S₂ surgery and same-modulus board growth are dead ends.
+Next: finish Conjecture B, or change the algebraic family/modulus with `n`.

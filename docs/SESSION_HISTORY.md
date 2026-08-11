@@ -109,3 +109,9 @@ Timeline is approximate; cloud VMs were wiped mid-work.
 - Drop one T2 half-block (± M/H refill) then polish vs multi-seed baseline
 - Only O(1) gains; comparable to random same-size deletion
 - Posted: `docs/FINDINGS_BLOCK_SACRIFICE.md`, `data/block_sacrifice_scan.csv`
+
+## Phase 18 — Ambient redesign / sharp n≤2p bound
+
+- Proved sharpness: single-H cleanliness requires n≤2p (dirty at n=2p+1)
+- Larger boards with same modulus lose the two-lift advantage; densities lag
+- Posted: `docs/FINDINGS_AMBIENT.md`, `data/ambient_sharp_scan.csv`
