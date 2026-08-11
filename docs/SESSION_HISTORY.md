@@ -32,9 +32,38 @@ Timeline is approximate; cloud VMs were wiped mid-work.
 - Public repo ≠ push access
 - Commit/push continuously; local artifacts die with the pod
 
-## Smoke results (2026-08-11 offload)
+## Phase 6 — Algebraic survivor fix + subset tables (2026-08-11)
 
-- HJSW verified for p∈{3,5,7,11,17,19} with exact size 3(p−1)
-- `solution(10)` → n=14, 23 points, ratio≈1.6429, verified
-- `distributed/scripts/demo_local.sh`: 6 jobs seeded, 3 claims accepted, fake collinear → HTTP 400
-- Addability scan written to `data/addability_scan.csv`
+- Fixed four-constraint horiz/vert filter: use ≥2 saturation, not “occupied”
+- Slope-table O(m) individual addability; exact/greedy MIS on tiny ok-pools
+- Empirically: 4-constraint survivors grow with p, but all-slope survivors stay O(10–50)
+- Additive gains of ~4–31 points; some ratios >1.55; no asymptotic breakthrough
+- Data: `data/addability_scan.csv`, `data/subset_scan.csv`
+
+## Phase 7 — Hyperbola-union next step + findings post
+
+- Compared HJSW / subset / ±1-filtered multi-hyperbola unions on p≤181
+- Union does not systematically beat subset (13–5 in subset’s favor; Δ≈0)
+- Root cause: H(c₁) vs HJSW has individually-ok counts typically 0–2
+- Posted write-up: `docs/FINDINGS.md`
+- Next direction: simultaneous / delete-first multi-hyperbola designs
+
+## Phase 8 — Simultaneous / delete-first multi-hyperbola
+
+- Implemented raw multi-hyperbola pools + delete-first / greedy-keep
+- Scan p≤97: multi loses to subset (9–2); falls back to HJSW by p≈83
+- Posted: `docs/FINDINGS_MULTI_HYPERBOLA.md` + `data/multi_hyperbola_scan.csv`
+- Unstructured deletion on bigger unions does not beat classical S₂
+
+## Phase 9 — Exact primary-class repair
+
+- BnB max subset with ≤2 per row/col/±1 on multi-hyperbola pools
+- Primary size can exceed HJSW by ~Θ(p); all-slope repair loss grows faster
+- Posted: `docs/FINDINGS_PRIMARY_REPAIR.md`, `data/primary_surplus_diag.csv`
+- Binding obstruction = non-primary slopes, not primary capacity
+
+## Phase 10 — All-slope hitting lower bounds
+
+- Disjoint-excess LB on general-slope deletions vs primary surplus
+- For p≥17, LB > surplus (gap widens with p); surplus cannot survive repair
+- Posted: `docs/FINDINGS_ALLSLOPE_HITTING.md`, `data/allslope_hitting_scan.csv`

@@ -1,0 +1,12 @@
+p,n,hjsw_size,hjsw_ratio,subset_size,subset_ratio,multi_size,multi_ratio,multi_family,multi_mode,multi_residues,multi_mask_t2,multi_pool,best_method,best_ratio,beats_1_55,delta_multi_minus_hjsw,delta_multi_minus_subset,runtime_s
+5,10,12,1.200000,16,1.600000,16,1.600000,multi_hyperbola_delete_first,delete_first,1|2,True,12,subset,1.600000,1,4,0,0.008
+7,14,18,1.285714,22,1.571429,23,1.642857,multi_hyperbola_greedy_keep,greedy_keep,1|2|6,True,36,multi,1.642857,1,5,1,0.022
+17,34,48,1.411765,53,1.558824,53,1.558824,multi_hyperbola_delete_first,delete_first,1|3,True,84,subset,1.558824,1,5,0,0.211
+19,38,54,1.421053,58,1.526316,59,1.552632,multi_hyperbola_delete_first,delete_first,1|3,False,144,multi,1.552632,1,5,1,0.289
+31,62,90,1.451613,96,1.548387,94,1.516129,multi_hyperbola_delete_first,delete_first,1|2|3,False,360,subset,1.548387,0,4,-2,1.068
+37,74,108,1.459459,114,1.540541,112,1.513514,multi_hyperbola_delete_first,delete_first,1|2,True,204,subset,1.540541,0,4,-2,1.750
+61,122,180,1.475410,187,1.532787,181,1.483607,multi_hyperbola_delete_first,delete_first,1|2,False,480,subset,1.532787,0,1,-6,6.842
+67,134,198,1.477612,209,1.559701,201,1.500000,multi_hyperbola_delete_first,delete_first,1|2|66,True,576,subset,1.559701,1,3,-8,8.978
+71,142,210,1.478873,219,1.542254,213,1.500000,multi_hyperbola_delete_first,delete_first,1|2|70,False,840,subset,1.542254,0,3,-6,10.430
+83,166,246,1.481928,255,1.536145,246,1.481928,hjsw_fallback,,,,,subset,1.536145,0,0,-9,16.249
+97,194,288,1.484536,302,1.556701,288,1.484536,hjsw_fallback,,,,,subset,1.556701,1,0,-14,25.673

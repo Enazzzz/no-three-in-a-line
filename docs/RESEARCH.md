@@ -87,5 +87,9 @@ constitute an asymptotic breakthrough.
 
 ## Preferred research direction
 
-See `ALGEBRAIC_ADDABILITY.md`: residue constraints for the four primary
-difference classes, then largest algebraic subset avoiding those classes.
+See `ALGEBRAIC_ADDABILITY.md` and **`FINDINGS.md`**.
+
+Short version (2026-08-11): raw multi-hyperbola primary packing can beat HJSW
+size, but for `p≥17` a deletion lower bound on non-primary lines already
+exceeds that surplus — so the surplus cannot survive. See FINDINGS*.md.
+Next leverage is algebraic control of arbitrary slopes, not better deletion.

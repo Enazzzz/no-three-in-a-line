@@ -38,6 +38,6 @@ Workers are **never** trusted. The coordinator re-runs exact integer collinearit
 
 ## Next agent
 
-1. Read `AGENT_MEMORY_DUMP.md`
-2. Delete it and commit `chore: remove AGENT_MEMORY_DUMP after ingest`
-3. Continue algebraic / distributed search; push often
+1. Read `docs/FINDINGS*.md` (especially `FINDINGS_ALLSLOPE_HITTING.md`)
+2. Next leverage: structured control of non-primary slopes, or prove LB≥surplus
+3. Push often — VM disk is temporary

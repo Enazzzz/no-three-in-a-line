@@ -6,7 +6,8 @@ import random
 import time
 from typing import List, Optional, Sequence, Set, Tuple
 
-from research.algebraic import four_constraint_survivors
+from research.algebraic import four_constraint_survivors, unsaturated_hv_candidates
+from research.subset import build_slope_tables, individually_addable, _norm_slope
 from research.verify import _orient
 
 Point = Tuple[int, int]
@@ -14,7 +15,6 @@ Point = Tuple[int, int]
 
 def _shares_line_with_two(pt: Point, pts: Sequence[Point]) -> bool:
 	"""Return True if adding pt creates a 3-term collinear subset with existing pts."""
-	# For each existing pair, check collinearity with pt — O(m^2); OK for moderate m.
 	m = len(pts)
 	for i in range(m):
 		for j in range(i + 1, m):
@@ -34,31 +34,24 @@ def greedy_augment(
 	"""Greedily add candidates that preserve no-three-in-line.
 
 	If prefer_four_constraint, first try survivors of the four primary
-	residue constraints; then fall back to remaining empty cells.
+	residue constraints; then fall back to remaining unsaturated hv cells.
+	Uses slope tables so each candidate check is O(m), not O(m²).
 	"""
 	rng = random.Random(seed)
 	pts: List[Point] = [tuple(p) for p in base]  # type: ignore[misc]
 	occupied: Set[Point] = set(pts)
 	t0 = time.monotonic()
+	tables = build_slope_tables(pts)
 
 	if candidates is None:
+		hv = unsaturated_hv_candidates(n, pts)
 		if prefer_four_constraint:
-			primary = four_constraint_survivors(n, pts)
+			primary = four_constraint_survivors(n, pts, hv)
 			primary_set = set(primary)
-			rest = [
-				(x, y)
-				for x in range(1, n + 1)
-				for y in range(1, n + 1)
-				if (x, y) not in occupied and (x, y) not in primary_set
-			]
+			rest = [c for c in hv if c not in primary_set]
 			candidates = list(primary) + rest
 		else:
-			candidates = [
-				(x, y)
-				for x in range(1, n + 1)
-				for y in range(1, n + 1)
-				if (x, y) not in occupied
-			]
+			candidates = hv
 
 	order = list(candidates)
 	rng.shuffle(order)
@@ -68,8 +61,14 @@ def greedy_augment(
 			break
 		if cand in occupied:
 			continue
-		if _shares_line_with_two(cand, pts):
+		if not individually_addable(cand, pts, tables):
 			continue
+		# Extend slope tables with the accepted point.
+		tables[cand] = set()
+		for q in pts:
+			s = _norm_slope(cand[0] - q[0], cand[1] - q[1])
+			tables[q].add(s)
+			tables[cand].add(s)
 		pts.append(cand)
 		occupied.add(cand)
 	return pts
