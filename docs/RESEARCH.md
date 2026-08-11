@@ -89,8 +89,8 @@ constitute an asymptotic breakthrough.
 
 See `ALGEBRAIC_ADDABILITY.md` and **`FINDINGS.md`**.
 
-Short version (2026-08-11): polishing HJSW (subset MIS) and grafting a second
-hyperbola with `±1` deletion land at nearly the same `~1.56n` ratios on
-`p≤181`. Second-hyperbola points are almost never all-slope-safe vs S₂
-(`indiv_ok` usually 0–2). Next step is simultaneous / delete-first
-multi-hyperbola design — not more HJSW polishing.
+Short version (2026-08-11): polishing HJSW, grafting a second hyperbola, and
+unstructured delete-first on multi-hyperbola unions all land at or below
+`~1.55n` finite gains and do **not** show extras growing with `p`. See
+`FINDINGS.md` + `FINDINGS_MULTI_HYPERBOLA.md`. Next leverage is structured
+masks / exact primary repair — not more greedy union polishing.
