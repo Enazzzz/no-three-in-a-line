@@ -85,7 +85,8 @@ best-of (HJSW warm-start / exact BnB / greedy) primary packing `S` of
 **Scope warning:** false for arbitrary primary-feasible sets — an in-pool
 NTIL set can beat HJSW by a few points with `LB = 0`.
 
-→ `docs/PROOF_LB_SURPLUS.md`, earlier table in `FINDINGS_ALLSLOPE_HITTING.md`
+→ `docs/PROOF_LB_SURPLUS.md`, `data/lb_surplus_scan.csv`,
+`data/conjecture_b_lemmas_scan.csv` (B1/B2 reduction)
 
 ---
 
@@ -164,12 +165,11 @@ triples whose mandatory deletions exceed it.
 
 ## Open directions (higher leverage)
 
-1. **Finish Conjecture B** for **board** multi-`H` pools — matching outline in
-   `PROOF_LB_SURPLUS.md`. Do not assume it for ambient-aligned pools.
+1. **Prove Conjecture B** for board multi-`H` pools — reduce to lemmas B1/B2
+   in `PROOF_LB_SURPLUS.md` (both certified 80/80; neither proved).
 2. **New algebraic family + cut**, with modulus co-designed with `n`
-   (not “same `p`, bigger board”, and not another ambient multi-`H` polish).
-3. Anything that is **not** another HJSW-first graft, multi-`H` primary
-   packing, S₂ polish-seed surgery, or ambient-shift multi-`H` local search.
+   (secondary while the goal is a theorem from the obstruction map).
+3. Avoid saturated HJSW grafts / multi-`H` polish / ambient-shift local search.
 
 Still out of scope as a “solution”: claiming density `> 3/2 + ε` without a
 construction or proof.

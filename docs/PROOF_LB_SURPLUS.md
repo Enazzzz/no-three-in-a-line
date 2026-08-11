@@ -93,20 +93,48 @@ PYTHONPATH=. python3 research/scan_lb_surplus.py --lo 7 --hi 80 > data/lb_surplu
 
 ## Proof outline toward Conjecture B (incomplete)
 
-1. **Color partition.** Residues `c=xy mod p` partition `S` as `⊔_c S_c`.
-2. **Majority / minority.** Let `M = max_c |S_c|` and `m = |S|−M` (minority
-   mass). For max-primary `S` one expects `M` close to the mono-color NTIL
-   scale while `m` is forced upward by the cardinality objective.
-3. **Matching.** Because bad lines are mixed (Theorem A) and typically have
-   size 3, a disjoint packing of bad lines yields
-   `LB(S) ≥ ν` with `ν` on the order of `m/3` when minority points are almost
-   all incident to some bad line (observed: minority coverage ≳90%).
-4. **Gap.** Need a uniform inequality `ν ≥ |S|−3(p−1)`. Missing piece: a
-   lower bound on `ν` in terms of `|S|` and `p` that does not depend on the
-   algorithmic packing.
+### Reduction (sufficient lemmas)
 
-Until step 4 is closed, Conjecture B remains open; Certificate B′ is the
-working substitute for the pools this repo actually searches.
+Write `M = max_c |S ∩ H(c)|` and `m = |S| − M` (majority / minority mass
+under **board** coloring `xy mod p`). Let `LB` be the disjoint-excess lower
+bound. Conjecture B follows from:
+
+| Lemma | Statement | Status |
+|-------|-----------|--------|
+| **B1** | `LB(S) ≥ ⌊m/3⌋` | Certified 80/80 on algorithmic max-primary packs (`data/conjecture_b_lemmas_scan.csv`); **not proved** |
+| **B2** | `⌊m/3⌋ ≥ surplus(S)` | Same certificate 80/80; **not proved** |
+
+Together: `LB ≥ ⌊m/3⌋ ≥ surplus`. Code: `research/conjecture_b_lemmas.py`.
+
+**Caveats for a proof of B1.** Minority points are **not** always all on bad
+lines (min coverage ≈ 0.81 on the certificate). So B1 is not just
+“cover minority by disjoint triangles.” The disjoint-excess packing still
+clears `⌊m/3⌋` on every scanned row; the missing argument is a structural
+matching that does not assume full coverage.
+
+**Caveats for a proof of B2.** Equivalently
+`3(p−1) − M ≥ m − ⌊m/3⌋` (majority deficit vs residual minority). On the
+certificate, `surplus/m ≤ 1/4`. A usable bound may come from controlling
+`M` via mono-color primary capacity (below).
+
+### Outline steps (older numbering)
+
+1. **Color partition.** Residues `c=xy mod p` partition `S` as `⊔_c S_c`.
+2. **Majority / minority.** As above.
+3. **Matching (→ B1).** Mixed bad lines (Theorem A) + disjoint excess packing
+   → `LB ≥ ⌊m/3⌋` for large primary `S`.
+4. **Gap (→ B2).** Uniform `⌊m/3⌋ ≥ |S|−3(p−1)`.
+
+Until B1 and B2 are proved for max-primary `S`, Conjecture B remains open;
+Certificate B′ + the B1/B2 scan are the working substitutes.
+
+### Empirical mono-color capacity (lemma candidate)
+
+Any primary-feasible subset of a **single** board `H(c)` is NTIL
+(`PROOF_SINGLE_H`). Algorithmic max primary inside board `H(1)` is only about
+`0.68–0.75` of `|HJSW|` for `17≤p≤43` (appendix in the lemma scan log) —
+consistent with HJSW living in ambient T2, not board `H(1)`. A proved upper
+bound `M ≤ α·3(p−1)` with `α<1` would help B2.
 
 ## Consequences
 
@@ -124,6 +152,10 @@ working substitute for the pools this repo actually searches.
 
 ## Next step
 
-Either finish step 4 of the outline (matching bound for max-primary `S`),
-or leave the proof track and seek a construction that is not a multi-`H`
-primary packing.
+**Theorem track (preferred):** prove lemmas **B1** and **B2** above for
+maximum-cardinality primary-feasible `S ⊆ U(C)` (board pools). Start with
+B2 via a mono-color majority bound, then B1 via a matching that tolerates
+uncovered minority points.
+
+Construction track remains open but is secondary while the goal is a theorem
+out of the multi-`H` obstruction.

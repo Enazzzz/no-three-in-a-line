@@ -122,3 +122,10 @@ Timeline is approximate; cloud VMs were wiped mid-work.
 - Ambient-aligned pools contain HJSW; fair local search only +O(1) vs polish
 - Ambient primary can violate LB≥surplus (Conjecture B′ is pool-dependent)
 - Posted: `docs/FINDINGS_AMBIENT_MULTI_H.md`, `data/ambient_multi_h_scan.csv`
+
+## Phase 20 — Conjecture B reduction (theorem track)
+
+- Goal pivot: prefer theorems over new constructions
+- Certified lemmas B1 (`LB≥⌊m/3⌋`) and B2 (`⌊m/3⌋≥surplus`) on 80/80 board packs
+- Minority bad-line coverage imperfect (≳0.81); mono-color primary ≪ HJSW
+- Posted: updated `docs/PROOF_LB_SURPLUS.md`, `data/conjecture_b_lemmas_scan.csv`
